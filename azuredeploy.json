@@ -1,0 +1,224 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-
+
+01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "variables": {
+    "cdnApiVersion":"2015-06-01",
+    "storageApiVersion":"2015-06-15"
+  },
+  "parameters": {
+    "serverFarmName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the Server Farm"
+      }
+    },
+    "webAppName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the Web App"
+      }
+    },
+    "adminAppName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the Web App"
+      }
+    },
+    "storageAccountName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the Storage Account"
+      }
+    },
+    "profileNameCDN": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the CDN Profile"
+      }
+    },
+    "endpointNameCDN": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the CDN Endpoint"
+      }
+    },
+    "sku": {
+      "type": "string",
+      "allowedValues": [
+        "Free",
+        "Shared",
+        "Basic",
+        "Standard"
+      ],
+      "defaultValue": "Free",
+      "metadata": {
+        "description": "The pricing tier for the hosting plan."
+      }
+    },
+    "redisCacheName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the Azure Redis Cache to create."
+      }
+    },
+    "redisCacheSKU": {
+      "type": "string",
+      "allowedValues": [
+        "Basic",
+        "Standard"
+      ],
+      "defaultValue": "Basic",
+      "metadata": {
+        "description": "The pricing tier of the new Azure Redis Cache."
+      }
+    },
+    "redisCacheFamily": {
+      "type": "string",
+      "defaultValue": "C",
+      "metadata": {
+        "description": "The family for the sku."
+      }
+    },
+    "redisCacheCapacity": {
+      "type": "int",
+      "allowedValues": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "defaultValue": 0,
+      "metadata": {
+        "description": "The size of the new Azure Redis Cache instance. "
+      }
+    },
+    "redisCacheVersion": {
+      "type": "string",
+      "defaultValue": "2.8",
+      "metadata": {
+        "description": "The Redis server version of the new cache."
+      }
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2014-04-01-preview",
+      "name": "[parameters('redisCacheName')]",
+      "type": "Microsoft.Cache/Redis",
+      "location": "[parameters('siteLocation')]",
+      "properties": {
+        "sku": {
+          "name": "[parameters('redisCacheSKU')]",
+          "family": "[parameters('redisCacheFamily')]",
+          "capacity": "[parameters('redisCacheCapacity')]"
+        },
+        "redisVersion": "[parameters('redisCacheVersion')]",
+        "enableNonSslPort": true
+      }
+    },
+    {
+      "name": "[parameters('serverFarmName')]",
+      "type": "Microsoft.Web/serverfarms",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "[variables('webAppApiVersion')]",
+      "properties": {
+        "name": "[parameters('serverFarmName')]",
+        "sku": "Free",
+        "workerSize": "0",
+        "numberOfWorkers": 1
+      }
+    },
+    {
+      "name": "[parameters('webAppName')]",
+      "type": "Microsoft.Web/sites",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "[variables('webAppApiVersion')]",
+      "dependsOn": [
+        "[concat('Microsoft.Web/serverfarms/', parameters('serverFarmName'))]",
+	"[resourceId('Microsoft.Cache/Redis', parameters('redisCacheName'))]"
+      ],
+      "properties": {
+        "name": "[parameters('webAppName')]",
+        "serverFarm": "[parameters('serverFarmName')]"
+      }
+    },
+    {
+      "name": "[parameters('adminAppName')]",
+      "type": "Microsoft.Web/sites",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "[variables('webAppApiVersion')]",
+      "dependsOn": [
+        "[concat('Microsoft.Web/serverfarms/', parameters('serverFarmName'))]"
+      ],
+      "properties": {
+        "name": "[parameters('webAppName')]",
+        "serverFarm": "[parameters('serverFarmName')]"
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[parameters('storageAccountName')]",
+      "apiVersion": "[variables('storageApiVersion')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "accountType": "Standard_LRS"
+      }
+    },
+    {
+      "name": "[parameters('profileNameCDN')]",
+      "type": "Microsoft.Cdn/profiles",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "[variables('cdnApiVersion')]",
+      "properties": {
+        "sku": {
+          "name": "Standard"
+        }
+      }
+    },
+    {
+      "apiVersion": "[variables('cdnApiVersion')]",
+      "dependsOn": [
+        "[concat('Microsoft.Cdn/profiles/', parameters('profileNameCDN'))]",
+        "[concat('Microsoft.Storage/storageAccounts/', parameters
+
+('storageAccountName'))]"
+      ],
+      "location": "[resourceGroup().location]",
+      "name": "[concat(parameters('profileNameCDN'),'/',parameters
+
+('endpointNameCDN'))]",
+      "type": "Microsoft.Cdn/profiles/endpoints",
+      "properties": {
+        "originHostHeader": "[replace(replace(reference(resourceId
+
+('Microsoft.Storage/storageAccounts', parameters('storageAccountName')),'2015-06-15' 
+
+).primaryEndpoints.blob,'https://',''),'/','')]",
+        "isHttpAllowed": true,
+        "isHttpsAllowed": true,
+        "queryStringCachingBehavior": "IgnoreQueryString",
+        "contentTypesToCompress": [ "text/plain", "text/html", "text/css", 
+
+"application/x-javascript", "text/javascript" ],
+        "isCompressionEnabled": "True",
+        "origins": [
+          {
+            "name": "origin1",
+            "properties": {
+              "hostName": "[replace(replace(reference(resourceId
+
+('Microsoft.Storage/storageAccounts', parameters('storageAccountName')),'2015-06-15' 
+
+).primaryEndpoints.blob,'https://',''),'/','')]"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

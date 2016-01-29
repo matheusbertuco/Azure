@@ -155,7 +155,7 @@
         "[concat('Microsoft.Web/serverfarms/', parameters('serverFarmName'))]"
       ],
       "properties": {
-        "name": "[parameters('webAppName')]",
+        "name": "[parameters('adminAppName')]",
         "serverFarm": "[parameters('serverFarmName')]"
       }
     },

@@ -1,7 +1,7 @@
 { 
-  "itemDisplayName": "Create a WebSmart", 
-  "description": "This template creates a WebSmart", 
+  "itemDisplayName": "Create a WebSmart project", 
+  "description": "This template creates a WebSmart project", 
   "summary": "WebSmart", 
   "githubUsername": "matheusbertuco", 
-  "dateUpdated": "2015-10-22" 
+  "dateUpdated": "2016-01-30" 
 } 

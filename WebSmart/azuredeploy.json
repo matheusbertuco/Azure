@@ -12,24 +12,28 @@
   "parameters": {
     "webAppName": {
       "type": "string",
+	  "defaultValue": "PROJETOWebApp",
       "metadata": {
         "description": "Name of the Web App"
       }
     },
     "adminAppName": {
       "type": "string",
+	  "defaultValue": "PROJETOAdmin",
       "metadata": {
         "description": "Name of the Web App"
       }
     },
     "storageAccountName": {
       "type": "string",
+	  "defaultValue": "PROJETOStorage",
       "metadata": {
         "description": "Name of the Storage Account"
       }
     },
     "endpointNameCDN": {
       "type": "string",
+	  "defaultValue": "PROJETOCDN",
       "metadata": {
         "description": "Name of the CDN Endpoint"
       }
@@ -157,7 +161,7 @@
       }
     },
     {
-      "name": "[parameters('profileNameCDN')]",
+      "name": "[variables('profileNameCDN')]",
       "type": "Microsoft.Cdn/profiles",
       "location": "[resourceGroup().location]",
       "apiVersion": "[variables('cdnApiVersion')]",
@@ -170,13 +174,13 @@
     {
       "apiVersion": "[variables('cdnApiVersion')]",
       "dependsOn": [
-        "[concat('Microsoft.Cdn/profiles/', parameters('profileNameCDN'))]",
+        "[concat('Microsoft.Cdn/profiles/', variables('profileNameCDN'))]",
         "[concat('Microsoft.Storage/storageAccounts/', parameters
 
 ('storageAccountName'))]"
       ],
       "location": "[resourceGroup().location]",
-      "name": "[concat(parameters('profileNameCDN'),'/',parameters
+      "name": "[concat(variables('profileNameCDN'),'/',parameters
 
 ('endpointNameCDN'))]",
       "type": "Microsoft.Cdn/profiles/endpoints",

@@ -5,15 +5,11 @@
     "cdnApiVersion":"2015-06-01",
     "storageApiVersion":"2015-06-15",
     "webAppApiVersion":"2014-06-01",
-    "redisCacheVersion":"2.8"
+    "redisCacheVersion":"2.8",
+	"serverFarmName":"WebFarm",
+	"profileNameCDN":"ProfileCDN"
   },
   "parameters": {
-    "serverFarmName": {
-      "type": "string",
-      "metadata": {
-        "description": "Name of the Server Farm"
-      }
-    },
     "webAppName": {
       "type": "string",
       "metadata": {
@@ -32,12 +28,6 @@
         "description": "Name of the Storage Account"
       }
     },
-    "profileNameCDN": {
-      "type": "string",
-      "metadata": {
-        "description": "Name of the CDN Profile"
-      }
-    },
     "endpointNameCDN": {
       "type": "string",
       "metadata": {
@@ -52,7 +42,7 @@
         "Basic",
         "Standard"
       ],
-      "defaultValue": "Free",
+      "defaultValue": "Standard",
       "metadata": {
         "description": "The pricing tier for the hosting plan."
       }
@@ -69,13 +59,17 @@
         "Basic",
         "Standard"
       ],
-      "defaultValue": "Basic",
+      "defaultValue": "Standard",
       "metadata": {
         "description": "The pricing tier of the new Azure Redis Cache."
       }
     },
     "redisCacheFamily": {
       "type": "string",
+      "allowedValues": [
+        "C",
+        "P"
+      ],
       "defaultValue": "C",
       "metadata": {
         "description": "The family for the sku."
@@ -92,7 +86,7 @@
         5,
         6
       ],
-      "defaultValue": 0,
+      "defaultValue": 1,
       "metadata": {
         "description": "The size of the new Azure Redis Cache instance. "
       }
@@ -115,12 +109,12 @@
       }
     },
     {
-      "name": "[parameters('serverFarmName')]",
+      "name": "[variables('serverFarmName')]",
       "type": "Microsoft.Web/serverfarms",
       "location": "[resourceGroup().location]",
       "apiVersion": "[variables('webAppApiVersion')]",
       "properties": {
-        "name": "[parameters('serverFarmName')]",
+        "name": "[variables('serverFarmName')]",
         "sku": "Free",
         "workerSize": "0",
         "numberOfWorkers": 1
@@ -132,12 +126,12 @@
       "location": "[resourceGroup().location]",
       "apiVersion": "[variables('webAppApiVersion')]",
       "dependsOn": [
-        "[concat('Microsoft.Web/serverfarms/', parameters('serverFarmName'))]",
+        "[concat('Microsoft.Web/serverfarms/', variables('serverFarmName'))]",
 	"[resourceId('Microsoft.Cache/Redis', parameters('redisCacheName'))]"
       ],
       "properties": {
         "name": "[parameters('webAppName')]",
-        "serverFarm": "[parameters('serverFarmName')]"
+        "serverFarm": "[variables('serverFarmName')]"
       }
     },
     {
@@ -146,11 +140,11 @@
       "location": "[resourceGroup().location]",
       "apiVersion": "[variables('webAppApiVersion')]",
       "dependsOn": [
-        "[concat('Microsoft.Web/serverfarms/', parameters('serverFarmName'))]"
+        "[concat('Microsoft.Web/serverfarms/', variables('serverFarmName'))]"
       ],
       "properties": {
         "name": "[parameters('adminAppName')]",
-        "serverFarm": "[parameters('serverFarmName')]"
+        "serverFarm": "[variables('serverFarmName')]"
       }
     },
     {

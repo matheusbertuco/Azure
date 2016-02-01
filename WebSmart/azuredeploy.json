@@ -12,28 +12,28 @@
   "parameters": {
     "webAppName": {
       "type": "string",
-	  "defaultValue": "PROJETOWebApp",
+      "defaultValue": "PROJETOWebApp",
       "metadata": {
         "description": "Name of the Web App"
       }
     },
     "adminAppName": {
       "type": "string",
-	  "defaultValue": "PROJETOAdmin",
+      "defaultValue": "PROJETOAdmin",
       "metadata": {
         "description": "Name of the Web App"
       }
     },
     "storageAccountName": {
       "type": "string",
-	  "defaultValue": "PROJETOStorage",
+      "defaultValue": "PROJETOStorage",
       "metadata": {
         "description": "Name of the Storage Account"
       }
     },
     "endpointNameCDN": {
       "type": "string",
-	  "defaultValue": "PROJETOCDN",
+      "defaultValue": "PROJETOCDN",
       "metadata": {
         "description": "Name of the CDN Endpoint"
       }
@@ -53,7 +53,7 @@
     },
     "redisCacheName": {
       "type": "string",
-	  "defaultValue": "PROJETOCache",
+      "defaultValue": "PROJETOCache",
       "metadata": {
         "description": "The name of the Azure Redis Cache to create."
       }

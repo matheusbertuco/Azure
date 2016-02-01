@@ -110,7 +110,7 @@
           "family": "[parameters('redisCacheFamily')]",
           "capacity": "[parameters('redisCacheCapacity')]"
         },
-        "redisVersion": "[parameters('redisCacheVersion')]",
+        "redisVersion": "[variables('redisCacheVersion')]",
         "enableNonSslPort": true
       }
     },

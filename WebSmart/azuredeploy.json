@@ -4,7 +4,8 @@
   "variables": {
     "cdnApiVersion":"2015-06-01",
     "storageApiVersion":"2015-06-15",
-    "webAppApiVersion":"2014-06-01"
+    "webAppApiVersion":"2014-06-01",
+    "redisCacheVersion":"2.8"
   },
   "parameters": {
     "serverFarmName": {
@@ -94,13 +95,6 @@
       "defaultValue": 0,
       "metadata": {
         "description": "The size of the new Azure Redis Cache instance. "
-      }
-    },
-    "redisCacheVersion": {
-      "type": "string",
-      "defaultValue": "2.8",
-      "metadata": {
-        "description": "The Redis server version of the new cache."
       }
     }
   },

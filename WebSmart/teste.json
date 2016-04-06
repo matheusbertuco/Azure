@@ -64,7 +64,7 @@
   "resources": [
     {
       "apiVersion": "2014-04-01-preview",
-      "name": "[parameters('redisCacheName')]",
+      "name": "[variables('redisCacheName')]",
       "type": "Microsoft.Cache/Redis",
       "location": "[resourceGroup().location]",
       "properties": {
@@ -90,21 +90,21 @@
       }
     },
     {
-      "name": "[parameters('webAppName')]",
+      "name": "[variables('webAppName')]",
       "type": "Microsoft.Web/sites",
       "location": "[resourceGroup().location]",
       "apiVersion": "[variables('webAppApiVersion')]",
       "dependsOn": [
         "[concat('Microsoft.Web/serverfarms/', variables('serverFarmName'))]",
-	"[resourceId('Microsoft.Cache/Redis', parameters('redisCacheName'))]"
+        "[resourceId('Microsoft.Cache/Redis', variables('redisCacheName'))]"
       ],
       "properties": {
-        "name": "[parameters('webAppName')]",
+        "name": "[variables('webAppName')]",
         "serverFarm": "[variables('serverFarmName')]"
       }
     },
     {
-      "name": "[parameters('adminAppName')]",
+      "name": "[variables('adminAppName')]",
       "type": "Microsoft.Web/sites",
       "location": "[resourceGroup().location]",
       "apiVersion": "[variables('webAppApiVersion')]",
@@ -112,13 +112,13 @@
         "[concat('Microsoft.Web/serverfarms/', variables('serverFarmName'))]"
       ],
       "properties": {
-        "name": "[parameters('adminAppName')]",
+        "name": "[variables('adminAppName')]",
         "serverFarm": "[variables('serverFarmName')]"
       }
     },
     {
       "type": "Microsoft.Storage/storageAccounts",
-      "name": "[parameters('storageAccountName')]",
+      "name": "[variables('storageAccountName')]",
       "apiVersion": "[variables('storageApiVersion')]",
       "location": "[resourceGroup().location]",
       "properties": {
@@ -140,13 +140,13 @@
       "apiVersion": "[variables('cdnApiVersion')]",
       "dependsOn": [
         "[concat('Microsoft.Cdn/profiles/', variables('profileNameCDN'))]",
-        "[concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName'))]"
+        "[concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]"
       ],
       "location": "[resourceGroup().location]",
-      "name": "[concat(variables('profileNameCDN'),'/',parameters('endpointNameCDN'))]",
+      "name": "[concat(variables('profileNameCDN'),'/',variables('endpointNameCDN'))]",
       "type": "Microsoft.Cdn/profiles/endpoints",
       "properties": {
-        "originHostHeader": "[replace(replace(reference(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2015-06-15' ).primaryEndpoints.blob, 'https: //',''),'/','')]",
+        "originHostHeader": "[replace(replace(reference(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2015-06-15' ).primaryEndpoints.blob, 'https: //',''),'/','')]",
         "isHttpAllowed": true,
         "isHttpsAllowed": true,
         "queryStringCachingBehavior": "IgnoreQueryString",
@@ -163,7 +163,7 @@
           {
             "name": "origin1",
             "properties": {
-              "hostName": "[replace(replace(reference(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2015-06-15' ).primaryEndpoints.blob, 'https: //',''),'/','')]"
+              "hostName": "[replace(replace(reference(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2015-06-15' ).primaryEndpoints.blob, 'https: //',''),'/','')]"
             }
           }
         ]

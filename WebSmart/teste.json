@@ -146,7 +146,7 @@
       "name": "[concat(variables('profileNameCDN'),'/',variables('endpointNameCDN'))]",
       "type": "Microsoft.Cdn/profiles/endpoints",
       "properties": {
-        "originHostHeader": "[replace(replace(reference(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2015-06-15' ).primaryEndpoints.blob, 'https: //',''),'/','')]",
+        "originHostHeader": "[replace(replace(reference(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')),'2015-06-15' ).primaryEndpoints.blob,'https://',''),'/','')]",
         "isHttpAllowed": true,
         "isHttpsAllowed": true,
         "queryStringCachingBehavior": "IgnoreQueryString",
@@ -163,7 +163,7 @@
           {
             "name": "origin1",
             "properties": {
-              "hostName": "[replace(replace(reference(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2015-06-15' ).primaryEndpoints.blob, 'https: //',''),'/','')]"
+              "hostName": "[replace(replace(reference(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')),'2015-06-15' ).primaryEndpoints.blob,'https://',''),'/','')]"
             }
           }
         ]

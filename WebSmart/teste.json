@@ -242,7 +242,7 @@
           "properties": {
             "edition": "[parameters('editionSQL')]",
             "collation": "[variables('collationSQL')]",
-            "maxSizeBytes": "[parameters('maxSizeBytes')]",
+            "maxSizeBytes": "[variables('maxSizeBytes')]",
             "requestedServiceObjectiveName": "[parameters('requestedServiceObjectiveNameSQL')]"
           }
         },
@@ -263,4 +263,3 @@
     }
   ]
 }
-

@@ -1,0 +1,180 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "variables": {
+    "cdnApiVersion": "2015-06-01",
+    "storageApiVersion": "2015-06-15",
+    "webAppApiVersion": "2014-06-01",
+    "redisCacheVersion": "2.8",
+    "serverFarmName": "WebFarm",
+    "profileNameCDN": "ProfileCDN"
+  },
+  "parameters": {
+    "projeto": {
+      "type": "string",
+      "defaultValue": "ProjetoWebSmart",
+      "metadata": {
+        "description": "Name of the project Web Smart"
+      }
+    },
+    "skuWebApp": {
+      "type": "string",
+      "allowedValues": [
+        "Free",
+        "Shared",
+        "Basic",
+        "Standard"
+      ],
+      "defaultValue": "Standard",
+      "metadata": {
+        "description": "The pricing tier for the hosting plan."
+      }
+    },
+    "redisCacheSKU": {
+      "type": "string",
+      "allowedValues": [
+        "Basic",
+        "Standard"
+      ],
+      "defaultValue": "Standard",
+      "metadata": {
+        "description": "The pricing tier of the new Azure Redis Cache."
+      }
+    },
+    "redisCacheFamily": {
+      "type": "string",
+      "allowedValues": [
+        "C",
+        "P"
+      ],
+      "defaultValue": "C",
+      "metadata": {
+        "description": "The family for the sku."
+      }
+    },
+    "redisCacheCapacity": {
+      "type": "int",
+      "allowedValues": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "defaultValue": 1,
+      "metadata": {
+        "description": "The size of the new Azure Redis Cache instance. "
+      }
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2014-04-01-preview",
+      "name": "[concat('Redis', parameters('projeto'))]",
+      "type": "Microsoft.Cache/Redis",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "sku": {
+          "name": "[parameters('redisCacheSKU')]",
+          "family": "[parameters('redisCacheFamily')]",
+          "capacity": "[parameters('redisCacheCapacity')]"
+        },
+        "redisVersion": "[variables('redisCacheVersion')]",
+        "enableNonSslPort": true
+      }
+    },
+    {
+      "name": "[concat('WebFarm', parameters('projeto'))]",
+      "type": "Microsoft.Web/serverfarms",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "[variables('webAppApiVersion')]",
+      "properties": {
+        "name": "[variables('serverFarmName')]",
+        "sku": "Free",
+        "workerSize": "0",
+        "numberOfWorkers": 1
+      }
+    },
+    {
+      "name": "[concat('WebApp', parameters('projeto'))]",
+      "type": "Microsoft.Web/sites",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "[variables('webAppApiVersion')]",
+      "dependsOn": [
+        "[concat('Microsoft.Web/serverfarms/', [concat('WebFarm', parameters('projeto'))])]",
+        "[resourceId('Microsoft.Cache/Redis', [concat('Redis', parameters('projeto'))])]"
+      ],
+      "properties": {
+        "name": "[concat('WebApp', parameters('projeto'))]",
+        "serverFarm": "[concat('WebFarm', parameters('projeto'))]"
+      }
+    },
+    {
+      "name": "[concat('WebApp', parameters('projeto'), 'Admin']",
+      "type": "Microsoft.Web/sites",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "[variables('webAppApiVersion')]",
+      "dependsOn": [
+        "[concat('Microsoft.Web/serverfarms/', [concat('WebFarm', parameters('projeto'))])]"
+      ],
+      "properties": {
+        "name": "[concat('WebApp', parameters('projeto'), 'Admin']",
+        "serverFarm": "[concat('WebFarm', parameters('projeto'))]"
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[concat('Storage', parameters('projeto'))]",
+      "apiVersion": "[variables('storageApiVersion')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "accountType": "Standard_LRS"
+      }
+    },
+    {
+      "name": "[concat('CDN', parameters('projeto'))]",
+      "type": "Microsoft.Cdn/profiles",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "[variables('cdnApiVersion')]",
+      "properties": {
+        "sku": {
+          "name": "Standard"
+        }
+      }
+    },
+    {
+      "apiVersion": "[variables('cdnApiVersion')]",
+      "dependsOn": [
+        "[concat('Microsoft.Cdn/profiles/', [concat('CDN', parameters('projeto'))])]",
+        "[concat('Microsoft.Storage/storageAccounts/', [concat('Storage', parameters('projeto'))])]"
+      ],
+      "location": "[resourceGroup().location]",
+      "name": "[concat(variables('profileNameCDN'),'/',[concat('CDNEndPonit', parameters('projeto'))])]",
+      "type": "Microsoft.Cdn/profiles/endpoints",
+      "properties": {
+        "originHostHeader": "[replace(replace(reference(resourceId('Microsoft.Storage/storageAccounts', [concat('Storage', parameters('projeto')]), '2015-06-15' ).primaryEndpoints.blob, 'https: //',''),'/','')]",
+        "isHttpAllowed": true,
+        "isHttpsAllowed": true,
+        "queryStringCachingBehavior": "IgnoreQueryString",
+        "contentTypesToCompress": [
+          "text/plain",
+          "text/html",
+          "text/css",
+          "application/x-javascript",
+          "text/javascript"
+        ],
+        "isCompressionEnabled": "True",
+        "origins": [
+          {
+            "name": "origin1",
+            "properties": {
+              "hostName": "[replace(replace(reference(resourceId('Microsoft.Storage/storageAccounts', [concat('Storage', parameters('projeto')]), '2015-06-15' ).primaryEndpoints.blob, 'https: //',''),'/','')]"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -13,7 +13,7 @@
     "storageAccountName": "[toLower(concat('Storage', parameters('Projeto')))]",
     "endpointNameCDN": "[concat('CDNEndPoint', parameters('Projeto'))]",
     "redisCacheName": "[concat('Redis', parameters('Projeto'))]",
-    "sqlserverName": "[concat('SQL', parameters('Projeto'))]",
+    "sqlserverName": "[toLower(concat('SQL', parameters('Projeto')))]",
     "databaseName": "[concat('DB', parameters('Projeto'))]",
     "collationSQL": "SQL_Latin1_General_CP1_CI_AS",
     "maxSizeBytes": "1073741824"

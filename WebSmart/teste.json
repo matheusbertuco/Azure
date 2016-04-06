@@ -10,9 +10,9 @@
     "profileNameCDN": "[concat('ProfileCDN', parameters('Projeto'))]",
     "webAppName": "[concat('WebApp', parameters('Projeto'))]",
     "adminAppName": "[concat('WebApp', parameters('Projeto'), 'Admin')]",
-    "storageAccountName": "[concat('Storage', parameters('Projeto'))]",
+    "storageAccountName": "[toLower(concat('Storage', parameters('Projeto')))]",
     "endpointNameCDN": "[concat('CDNEndPoint', parameters('Projeto'))]",
-    "redisCacheName": "[toLower(concat('Redis', parameters('Projeto')))]"
+    "redisCacheName": "[concat('Redis', parameters('Projeto'))]"
   },
   "parameters": {
     "Projeto": {

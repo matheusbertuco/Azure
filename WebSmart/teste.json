@@ -1,64 +1,84 @@
 {
   "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
+  "variables": {
+    "cdnApiVersion": "2015-06-01",
+    "storageApiVersion": "2015-06-15",
+    "webAppApiVersion": "2014-06-01",
+    "redisCacheVersion": "2.8",
+    "serverFarmName": "[concat('WebFarm', parameters('Projeto'))]",
+    "profileNameCDN": "[concat('ProfileCDN', parameters('Projeto'))]",
+    "webAppName": "[concat('WebApp', parameters('Projeto'))]",
+    "adminAppName": "[concat('WebApp', parameters('Projeto'), 'Admin')]",
+    "storageAccountName": "[toLower(concat('Storage', parameters('Projeto')))]",
+    "endpointNameCDN": "[concat('CDNEndPoint', parameters('Projeto'))]",
+    "redisCacheName": "[concat('Redis', parameters('Projeto'))]",
+    "sqlserverName": "[concat('SQL', parameters('Projeto'))]",
+    "databaseName": "[concat('DB', parameters('Projeto'))]",
+    "collationSQL": "SQL_Latin1_General_CP1_CI_AS",
+    "maxSizeBytes": "1073741824"
+  },
   "parameters": {
-    "skuName": {
+    "Projeto": {
       "type": "string",
-      "defaultValue": "F1",
+      "defaultValue": "NomoDoProjeto",
+      "metadata": {
+        "description": "Name of the project WebSmart"
+      }
+    },
+    "redisCacheSKU": {
+      "type": "string",
       "allowedValues": [
-        "F1",
-        "D1",
-        "B1",
-        "B2",
-        "B3",
-        "S1",
-        "S2",
-        "S3",
-        "P1",
-        "P2",
-        "P3",
-        "P4"
+        "Basic",
+        "Standard"
       ],
+      "defaultValue": "Standard",
       "metadata": {
-        "description": "Describes plan's pricing tier and instance size. Check details at https://azure.microsoft.com/en-us/pricing/details/app-service/"
+        "description": "The pricing tier of the new Azure Redis Cache."
       }
     },
-    "skuCapacity": {
-      "type": "int",
-      "defaultValue": 1,
-      "minValue": 1,
-      "metadata": {
-        "description": "Describes plan's instance count"
-      }
-    },
-    "administratorLogin": {
+    "redisCacheFamily": {
       "type": "string",
+      "allowedValues": [
+        "C",
+        "P"
+      ],
+      "defaultValue": "C",
+      "metadata": {
+        "description": "The family for the sku."
+      }
+    },
+    "redisCacheCapacity": {
+      "type": "int",
+      "allowedValues": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "defaultValue": 1,
+      "metadata": {
+        "description": "The size of the new Azure Redis Cache instance. "
+      }
+    },
+    "administratorLoginSQL": {
+      "type": "string",
+      "defaultValue": "Administrador",
       "metadata": {
         "description": "The admin user of the SQL Server"
       }
     },
-    "administratorLoginPassword": {
+    "administratorLoginPasswordSQL": {
       "type": "securestring",
       "metadata": {
         "description": "The password of the admin user of the SQL Server"
       }
 
     },
-    "databaseName": {
-      "type": "string",
-      "defaultValue": "sampledb",
-      "metadata": {
-        "description": "The name of the new database to create."
-      }
-    },
-    "collation": {
-      "type": "string",
-      "defaultValue": "SQL_Latin1_General_CP1_CI_AS",
-      "metadata": {
-        "description": "The database collation for governing the proper use of characters."
-      }
-    },
-    "edition": {
+    "editionSQL": {
       "type": "string",
       "defaultValue": "Basic",
       "allowedValues": [
@@ -70,14 +90,7 @@
         "description": "The type of database to create."
       }
     },
-    "maxSizeBytes": {
-      "type": "string",
-      "defaultValue": "1073741824",
-      "metadata": {
-        "description": "The maximum size, in bytes, for the database"
-      }
-    },
-    "requestedServiceObjectiveName": {
+    "requestedServiceObjectiveNameSQL": {
       "type": "string",
       "defaultValue": "Basic",
       "allowedValues": [
@@ -94,12 +107,114 @@
       }
     }
   },
-  "variables": {
-    "hostingPlanName": "[concat('hostingplan', uniqueString(resourceGroup().id))]",
-    "webSiteName": "[concat('webSite', uniqueString(resourceGroup().id))]",
-    "sqlserverName": "[concat('sqlserver', uniqueString(resourceGroup().id))]"
-  },
   "resources": [
+    {
+      "apiVersion": "2014-04-01-preview",
+      "name": "[variables('redisCacheName')]",
+      "type": "Microsoft.Cache/Redis",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "sku": {
+          "name": "[parameters('redisCacheSKU')]",
+          "family": "[parameters('redisCacheFamily')]",
+          "capacity": "[parameters('redisCacheCapacity')]"
+        },
+        "redisVersion": "[variables('redisCacheVersion')]",
+        "enableNonSslPort": true
+      }
+    },
+    {
+      "name": "[variables('serverFarmName')]",
+      "type": "Microsoft.Web/serverfarms",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "[variables('webAppApiVersion')]",
+      "properties": {
+        "name": "[variables('serverFarmName')]",
+        "sku": "Free",
+        "workerSize": "0",
+        "numberOfWorkers": 1
+      }
+    },
+    {
+      "name": "[variables('webAppName')]",
+      "type": "Microsoft.Web/sites",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "[variables('webAppApiVersion')]",
+      "dependsOn": [
+        "[concat('Microsoft.Web/serverfarms/', variables('serverFarmName'))]",
+        "[resourceId('Microsoft.Cache/Redis', variables('redisCacheName'))]"
+      ],
+      "properties": {
+        "name": "[variables('webAppName')]",
+        "serverFarm": "[variables('serverFarmName')]"
+      }
+    },
+    {
+      "name": "[variables('adminAppName')]",
+      "type": "Microsoft.Web/sites",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "[variables('webAppApiVersion')]",
+      "dependsOn": [
+        "[concat('Microsoft.Web/serverfarms/', variables('serverFarmName'))]"
+      ],
+      "properties": {
+        "name": "[variables('adminAppName')]",
+        "serverFarm": "[variables('serverFarmName')]"
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[variables('storageAccountName')]",
+      "apiVersion": "[variables('storageApiVersion')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "accountType": "Standard_LRS"
+      }
+    },
+    {
+      "name": "[variables('profileNameCDN')]",
+      "type": "Microsoft.Cdn/profiles",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "[variables('cdnApiVersion')]",
+      "properties": {
+        "sku": {
+          "name": "Standard"
+        }
+      }
+    },
+    {
+      "apiVersion": "[variables('cdnApiVersion')]",
+      "dependsOn": [
+        "[concat('Microsoft.Cdn/profiles/', variables('profileNameCDN'))]",
+        "[concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]"
+      ],
+      "location": "[resourceGroup().location]",
+      "name": "[concat(variables('profileNameCDN'),'/',variables('endpointNameCDN'))]",
+      "type": "Microsoft.Cdn/profiles/endpoints",
+      "properties": {
+        "originHostHeader": "[replace(replace(reference(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')),'2015-06-15' ).primaryEndpoints.blob,'https://',''),'/','')]",
+        "isHttpAllowed": true,
+        "isHttpsAllowed": true,
+        "queryStringCachingBehavior": "IgnoreQueryString",
+        "contentTypesToCompress": [
+          "text/plain",
+          "text/html",
+          "text/css",
+
+          "application/x-javascript",
+          "text/javascript"
+        ],
+        "isCompressionEnabled": "True",
+        "origins": [
+          {
+            "name": "origin1",
+            "properties": {
+              "hostName": "[replace(replace(reference(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')),'2015-06-15' ).primaryEndpoints.blob,'https://',''),'/','')]"
+            }
+          }
+        ]
+      }
+    },
     {
       "name": "[variables('sqlserverName')]",
       "type": "Microsoft.Sql/servers",
@@ -109,12 +224,12 @@
       },
       "apiVersion": "2014-04-01-preview",
       "properties": {
-        "administratorLogin": "[parameters('administratorLogin')]",
-        "administratorLoginPassword": "[parameters('administratorLoginPassword')]"
+        "administratorLogin": "[parameters('administratorLoginSQL')]",
+        "administratorLoginPassword": "[parameters('administratorLoginPasswordSQL')]"
       },
       "resources": [
         {
-          "name": "[parameters('databaseName')]",
+          "name": "[variables('databaseName')]",
           "type": "databases",
           "location": "[resourceGroup().location]",
           "tags": {
@@ -125,10 +240,10 @@
             "[variables('sqlserverName')]"
           ],
           "properties": {
-            "edition": "[parameters('edition')]",
-            "collation": "[parameters('collation')]",
+            "edition": "[parameters('editionSQL')]",
+            "collation": "[variables('collationSQL')]",
             "maxSizeBytes": "[parameters('maxSizeBytes')]",
-            "requestedServiceObjectiveName": "[parameters('requestedServiceObjectiveName')]"
+            "requestedServiceObjectiveName": "[parameters('requestedServiceObjectiveNameSQL')]"
           }
         },
         {
@@ -147,5 +262,5 @@
       ]
     }
   ]
-
 }
+

@@ -6,28 +6,20 @@
     "storageApiVersion": "2015-06-15",
     "webAppApiVersion": "2014-06-01",
     "redisCacheVersion": "2.8",
-    "serverFarmName": "WebFarm",
-    "profileNameCDN": "ProfileCDN"
+    "serverFarmName": "[concat('WebFarm', parameters('Projeto'))]",
+    "profileNameCDN": "[concat('ProfileCDN', parameters('Projeto'))]",
+    "webAppName": "[concat('WebApp', parameters('Projeto'))]",
+    "adminAppName": "[concat('WebApp', parameters('Projeto'), 'Admin')]",
+    "storageAccountName": "[concat('Storage', parameters('Projeto'))]",
+    "endpointNameCDN": "[concat('CDNEndPoint', parameters('Projeto'))]",
+    "redisCacheName": "[concat('Redis', parameters('Projeto'))]"
   },
   "parameters": {
-    "projeto": {
+    "Projeto": {
       "type": "string",
-      "defaultValue": "ProjetoWebSmart",
+      "defaultValue": "NomoDoProjeto",
       "metadata": {
-        "description": "Name of the project Web Smart"
-      }
-    },
-    "skuWebApp": {
-      "type": "string",
-      "allowedValues": [
-        "Free",
-        "Shared",
-        "Basic",
-        "Standard"
-      ],
-      "defaultValue": "Standard",
-      "metadata": {
-        "description": "The pricing tier for the hosting plan."
+        "description": "Name of the project WebSmart"
       }
     },
     "redisCacheSKU": {
@@ -72,7 +64,7 @@
   "resources": [
     {
       "apiVersion": "2014-04-01-preview",
-      "name": "[concat('Redis', parameters('projeto'))]",
+      "name": "[parameters('redisCacheName')]",
       "type": "Microsoft.Cache/Redis",
       "location": "[resourceGroup().location]",
       "properties": {
@@ -86,7 +78,7 @@
       }
     },
     {
-      "name": "[concat('WebFarm', parameters('projeto'))]",
+      "name": "[variables('serverFarmName')]",
       "type": "Microsoft.Web/serverfarms",
       "location": "[resourceGroup().location]",
       "apiVersion": "[variables('webAppApiVersion')]",
@@ -98,35 +90,35 @@
       }
     },
     {
-      "name": "[concat('WebApp', parameters('projeto'))]",
+      "name": "[parameters('webAppName')]",
       "type": "Microsoft.Web/sites",
       "location": "[resourceGroup().location]",
       "apiVersion": "[variables('webAppApiVersion')]",
       "dependsOn": [
-        "[concat('Microsoft.Web/serverfarms/', [concat('WebFarm', parameters('projeto'))])]",
-        "[resourceId('Microsoft.Cache/Redis', [concat('Redis', parameters('projeto'))])]"
+        "[concat('Microsoft.Web/serverfarms/', variables('serverFarmName'))]",
+	"[resourceId('Microsoft.Cache/Redis', parameters('redisCacheName'))]"
       ],
       "properties": {
-        "name": "[concat('WebApp', parameters('projeto'))]",
-        "serverFarm": "[concat('WebFarm', parameters('projeto'))]"
+        "name": "[parameters('webAppName')]",
+        "serverFarm": "[variables('serverFarmName')]"
       }
     },
     {
-      "name": "[concat('WebApp', parameters('projeto'), 'Admin']",
+      "name": "[parameters('adminAppName')]",
       "type": "Microsoft.Web/sites",
       "location": "[resourceGroup().location]",
       "apiVersion": "[variables('webAppApiVersion')]",
       "dependsOn": [
-        "[concat('Microsoft.Web/serverfarms/', [concat('WebFarm', parameters('projeto'))])]"
+        "[concat('Microsoft.Web/serverfarms/', variables('serverFarmName'))]"
       ],
       "properties": {
-        "name": "[concat('WebApp', parameters('projeto'), 'Admin']",
-        "serverFarm": "[concat('WebFarm', parameters('projeto'))]"
+        "name": "[parameters('adminAppName')]",
+        "serverFarm": "[variables('serverFarmName')]"
       }
     },
     {
       "type": "Microsoft.Storage/storageAccounts",
-      "name": "[concat('Storage', parameters('projeto'))]",
+      "name": "[parameters('storageAccountName')]",
       "apiVersion": "[variables('storageApiVersion')]",
       "location": "[resourceGroup().location]",
       "properties": {
@@ -134,7 +126,7 @@
       }
     },
     {
-      "name": "[concat('CDN', parameters('projeto'))]",
+      "name": "[variables('profileNameCDN')]",
       "type": "Microsoft.Cdn/profiles",
       "location": "[resourceGroup().location]",
       "apiVersion": "[variables('cdnApiVersion')]",
@@ -147,14 +139,14 @@
     {
       "apiVersion": "[variables('cdnApiVersion')]",
       "dependsOn": [
-        "[concat('Microsoft.Cdn/profiles/', [concat('CDN', parameters('projeto'))])]",
-        "[concat('Microsoft.Storage/storageAccounts/', [concat('Storage', parameters('projeto'))])]"
+        "[concat('Microsoft.Cdn/profiles/', variables('profileNameCDN'))]",
+        "[concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName'))]"
       ],
       "location": "[resourceGroup().location]",
-      "name": "[concat(variables('profileNameCDN'),'/',[concat('CDNEndPonit', parameters('projeto'))])]",
+      "name": "[concat(variables('profileNameCDN'),'/',parameters('endpointNameCDN'))]",
       "type": "Microsoft.Cdn/profiles/endpoints",
       "properties": {
-        "originHostHeader": "[replace(replace(reference(resourceId('Microsoft.Storage/storageAccounts', [concat('Storage', parameters('projeto')]), '2015-06-15' ).primaryEndpoints.blob, 'https: //',''),'/','')]",
+        "originHostHeader": "[replace(replace(reference(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2015-06-15' ).primaryEndpoints.blob, 'https: //',''),'/','')]",
         "isHttpAllowed": true,
         "isHttpsAllowed": true,
         "queryStringCachingBehavior": "IgnoreQueryString",
@@ -162,6 +154,7 @@
           "text/plain",
           "text/html",
           "text/css",
+
           "application/x-javascript",
           "text/javascript"
         ],
@@ -170,7 +163,7 @@
           {
             "name": "origin1",
             "properties": {
-              "hostName": "[replace(replace(reference(resourceId('Microsoft.Storage/storageAccounts', [concat('Storage', parameters('projeto')]), '2015-06-15' ).primaryEndpoints.blob, 'https: //',''),'/','')]"
+              "hostName": "[replace(replace(reference(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2015-06-15' ).primaryEndpoints.blob, 'https: //',''),'/','')]"
             }
           }
         ]

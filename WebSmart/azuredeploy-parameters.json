@@ -23,7 +23,7 @@
             "value": "#####"
         },
     	"redisCacheName": {
-      	    "value": "CacheName"
+      	    "value": "#####"
     	}
     }
 }

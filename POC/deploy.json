@@ -1746,6 +1746,12 @@
                                 "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_LtmVivoPrdAse01_name'))]"
                             }
                         }
+                    },
+                    {
+                        "name": "database",
+                        "properties": {
+                            "addressPrefix": "192.168.251.0/27"
+                        }
                     }
                 ]
             },
@@ -2513,11 +2519,11 @@
                 "status": "Active",
                 "createdAt": "2016-06-10T18:30:04.45Z",
                 "updatedAt": "2017-01-06T18:33:19.0858245Z",
-                "accessedAt": "2017-01-20T12:38:41.4578051Z",
+                "accessedAt": "2017-01-20T18:40:57.2268583Z",
                 "supportOrdering": false,
                 "countDetails": {
                     "activeMessageCount": 0,
-                    "deadLetterMessageCount": 37,
+                    "deadLetterMessageCount": 38,
                     "scheduledMessageCount": 0,
                     "transferMessageCount": 0,
                     "transferDeadLetterMessageCount": 0
@@ -2548,11 +2554,11 @@
                 "status": "Active",
                 "createdAt": "2016-06-10T18:49:57.54Z",
                 "updatedAt": "2017-01-06T14:06:09.603Z",
-                "accessedAt": "2017-01-20T12:38:41.5074431Z",
+                "accessedAt": "2017-01-20T18:40:57.2442305Z",
                 "supportOrdering": false,
                 "countDetails": {
                     "activeMessageCount": 0,
-                    "deadLetterMessageCount": 87,
+                    "deadLetterMessageCount": 88,
                     "scheduledMessageCount": 0,
                     "transferMessageCount": 0,
                     "transferDeadLetterMessageCount": 0
@@ -2583,7 +2589,7 @@
                 "status": "Active",
                 "createdAt": "2016-07-06T13:30:28.5722846Z",
                 "updatedAt": "2016-07-06T13:38:32.237Z",
-                "accessedAt": "2017-01-20T12:38:41.5074431Z",
+                "accessedAt": "2017-01-20T18:40:47.0754553Z",
                 "supportOrdering": false,
                 "countDetails": {
                     "activeMessageCount": 0,

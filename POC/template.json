@@ -1,0 +1,3191 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "service_ltmvivoprd01_name": {
+            "defaultValue": "ltmvivoprd01",
+            "type": "String"
+        },
+        "Redis_LtmVivoPrd01_TS_name": {
+            "defaultValue": "LtmVivoPrd01-TS",
+            "type": "String"
+        },
+        "Redis_LtmVivoPrd01_name": {
+            "defaultValue": "LtmVivoPrd01",
+            "type": "String"
+        },
+        "alertrules_proactive_diagnostics___ltmvivoprdgatewayapi01_name": {
+            "defaultValue": "proactive diagnostics - ltmvivoprdgatewayapi01",
+            "type": "String"
+        },
+        "alertrules_db_vivo_npp_alert_cpu_name": {
+            "defaultValue": "db_vivo_npp_alert_cpu",
+            "type": "String"
+        },
+        "alertrules_db_vivo_npp_alert_dtu_name": {
+            "defaultValue": "db_vivo_npp_alert_dtu",
+            "type": "String"
+        },
+        "alertrules_db_vivo_npp_alert_size_name": {
+            "defaultValue": "db_vivo_npp_alert_size",
+            "type": "String"
+        },
+        "alertrules_db_vivo_npp_cpu_name": {
+            "defaultValue": "db_vivo_npp_cpu",
+            "type": "String"
+        },
+        "alertrules_db_vivo_npp_database_size_name": {
+            "defaultValue": "db_vivo_npp_database_size",
+            "type": "String"
+        },
+        "alertrules_db_vivo_npp_dtu_name": {
+            "defaultValue": "db_vivo_npp_dtu",
+            "type": "String"
+        },
+        "alertrules_db_vivo_npp_new_cpu_name": {
+            "defaultValue": "db_vivo_npp_new_cpu",
+            "type": "String"
+        },
+        "alertrules_db_vivo_npp_new_dtu_name": {
+            "defaultValue": "db_vivo_npp_new_dtu",
+            "type": "String"
+        },
+        "alertrules_db_vivo_npp_new_size_name": {
+            "defaultValue": "db_vivo_npp_new_size",
+            "type": "String"
+        },
+        "alertrules_VerificarLogins_name": {
+            "defaultValue": "VerificarLogins",
+            "type": "String"
+        },
+        "autoscalesettings_LtmVivoPrd01_0_VivoPrd_name": {
+            "defaultValue": "LtmVivoPrd01-0-VivoPrd",
+            "type": "String"
+        },
+        "autoscalesettings_LtmVivoPrd01_default_VivoPrd_name": {
+            "defaultValue": "LtmVivoPrd01-default-VivoPrd",
+            "type": "String"
+        },
+        "autoscalesettings_LtmVivoPrd01_VivoPrd_name": {
+            "defaultValue": "LtmVivoPrd01-VivoPrd",
+            "type": "String"
+        },
+        "autoscalesettings_LtmVivoPrd_VivoPrd_name": {
+            "defaultValue": "LtmVivoPrd-VivoPrd",
+            "type": "String"
+        },
+        "autoscalesettings_LtmVivoPrdAse01_0_VivoPrd_name": {
+            "defaultValue": "LtmVivoPrdAse01-0-VivoPrd",
+            "type": "String"
+        },
+        "autoscalesettings_LtmVivoPrdAse01_default_VivoPrd_name": {
+            "defaultValue": "LtmVivoPrdAse01-default-VivoPrd",
+            "type": "String"
+        },
+        "components_ltmvivoprdadmin01_name": {
+            "defaultValue": "ltmvivoprdadmin01",
+            "type": "String"
+        },
+        "components_ltmvivoprdapiadmin01_name": {
+            "defaultValue": "ltmvivoprdapiadmin01",
+            "type": "String"
+        },
+        "components_ltmvivoprdapigateway01_name": {
+            "defaultValue": "ltmvivoprdapigateway01",
+            "type": "String"
+        },
+        "components_ltmvivoprdapimotorpontos01_name": {
+            "defaultValue": "ltmvivoprdapimotorpontos01",
+            "type": "String"
+        },
+        "components_ltmvivoprdbeneficios01_name": {
+            "defaultValue": "ltmvivoprdbeneficios01",
+            "type": "String"
+        },
+        "components_ltmvivoprdextratoresgate01_name": {
+            "defaultValue": "ltmvivoprdextratoresgate01",
+            "type": "String"
+        },
+        "components_ltmvivoprdgatewayapi01_name": {
+            "defaultValue": "ltmvivoprdgatewayapi01",
+            "type": "String"
+        },
+        "components_ltmvivoprdwebjobs01_name": {
+            "defaultValue": "ltmvivoprdwebjobs01",
+            "type": "String"
+        },
+        "networkSecurityGroups_LtmVivoPrdAse01_name": {
+            "defaultValue": "LtmVivoPrdAse01",
+            "type": "String"
+        },
+        "trafficManagerProfiles_ltmvivoprdmp01_name": {
+            "defaultValue": "ltmvivoprdmp01",
+            "type": "String"
+        },
+        "virtualNetworks_LtmVivoPrdAse01_name": {
+            "defaultValue": "LtmVivoPrdAse01",
+            "type": "String"
+        },
+        "vaults_LtmVivoPrd01_name": {
+            "defaultValue": "LtmVivoPrd01",
+            "type": "String"
+        },
+        "namespaces_LtmVivoPrd01_name": {
+            "defaultValue": "LtmVivoPrd01",
+            "type": "String"
+        },
+        "namespaces_ltmvivoprd01_ts_name": {
+            "defaultValue": "ltmvivoprd01-ts",
+            "type": "String"
+        },
+        "servers_ltmvivoprd01_name": {
+            "defaultValue": "ltmvivoprd01",
+            "type": "String"
+        },
+        "storageAccounts_ltmvivoprdstorage01ts_name": {
+            "defaultValue": "ltmvivoprdstorage01ts",
+            "type": "String"
+        },
+        "storageAccounts_ltmvivoprdstorage02ts_name": {
+            "defaultValue": "ltmvivoprdstorage02ts",
+            "type": "String"
+        },
+        "storageAccounts_ltmvivoprdstoragetable01_name": {
+            "defaultValue": "ltmvivoprdstoragetable01",
+            "type": "String"
+        },
+        "storageAccounts_ltmvivoprdstoragetable02_name": {
+            "defaultValue": "ltmvivoprdstoragetable02",
+            "type": "String"
+        },
+        "storageAccounts_ltmvivoprdwj01_name": {
+            "defaultValue": "ltmvivoprdwj01",
+            "type": "String"
+        },
+        "storageAccounts_ltmvivoprdwj01ts_name": {
+            "defaultValue": "ltmvivoprdwj01ts",
+            "type": "String"
+        },
+        "certificates_6904F471D50CC0B9C0B1E777DF5F67F74A269A93#LtmVivoPrdAse01#East_US_2#_name": {
+            "defaultValue": "6904F471D50CC0B9C0B1E777DF5F67F74A269A93#LtmVivoPrdAse01#East US 2#",
+            "type": "String"
+        },
+        "serverfarms_LtmVivoPrd_name": {
+            "defaultValue": "LtmVivoPrd",
+            "type": "String"
+        },
+        "sites_LtmVivoPrdExtratoResgate01_name": {
+            "defaultValue": "LtmVivoPrdExtratoResgate01",
+            "type": "String"
+        },
+        "sites_LtmVivoPrdAdmin01_TS_name": {
+            "defaultValue": "LtmVivoPrdAdmin01-TS",
+            "type": "String"
+        },
+        "sites_LtmVivoPrdApiGateway01_TS_name": {
+            "defaultValue": "LtmVivoPrdApiGateway01-TS",
+            "type": "String"
+        },
+        "sites_LtmVivoPrdAdmin01_name": {
+            "defaultValue": "LtmVivoPrdAdmin01",
+            "type": "String"
+        },
+        "sites_LtmVivoPrdApiAdmin01_TS_name": {
+            "defaultValue": "LtmVivoPrdApiAdmin01-TS",
+            "type": "String"
+        },
+        "sites_LtmVivoPrdApiAdmin01_name": {
+            "defaultValue": "LtmVivoPrdApiAdmin01",
+            "type": "String"
+        },
+        "sites_LtmVivoPrdApiGateway01_name": {
+            "defaultValue": "LtmVivoPrdApiGateway01",
+            "type": "String"
+        },
+        "sites_LtmVivoPrdWebJobs01_name": {
+            "defaultValue": "LtmVivoPrdWebJobs01",
+            "type": "String"
+        },
+        "sites_LtmVivoPrdExtratoResgate01_TS_name": {
+            "defaultValue": "LtmVivoPrdExtratoResgate01-TS",
+            "type": "String"
+        },
+        "sites_LtmVivoPrdBeneficios01_name": {
+            "defaultValue": "LtmVivoPrdBeneficios01",
+            "type": "String"
+        },
+        "sites_LtmVivoPrdBeneficios01_TS_name": {
+            "defaultValue": "LtmVivoPrdBeneficios01-TS",
+            "type": "String"
+        },
+        "AuthorizationRules_RootManageSharedAccessKey_name": {
+            "defaultValue": "LtmVivoPrd01/RootManageSharedAccessKey",
+            "type": "String"
+        },
+        "queues_email_name": {
+            "defaultValue": "LtmVivoPrd01/email",
+            "type": "String"
+        },
+        "queues_sms_name": {
+            "defaultValue": "LtmVivoPrd01/sms",
+            "type": "String"
+        },
+        "queues_vivo_notifications_name": {
+            "defaultValue": "LtmVivoPrd01/vivo-notifications",
+            "type": "String"
+        },
+        "authorizationRules_EscutarEnviar_name": {
+            "defaultValue": "LtmVivoPrd01/email/EscutarEnviar",
+            "type": "String"
+        },
+        "authorizationRules_Gerenciar_name": {
+            "defaultValue": "LtmVivoPrd01/email/Gerenciar",
+            "type": "String"
+        },
+        "authorizationRules_Enviar_name": {
+            "defaultValue": "LtmVivoPrd01/email/Enviar",
+            "type": "String"
+        },
+        "authorizationRules_EscutarEnviar_name_1": {
+            "defaultValue": "LtmVivoPrd01/sms/EscutarEnviar",
+            "type": "String"
+        },
+        "authorizationRules_Gerenciar_name_1": {
+            "defaultValue": "LtmVivoPrd01/sms/Gerenciar",
+            "type": "String"
+        },
+        "authorizationRules_Enviar_name_1": {
+            "defaultValue": "LtmVivoPrd01/sms/Enviar",
+            "type": "String"
+        },
+        "authorizationRules_EscutarEnviar_name_2": {
+            "defaultValue": "LtmVivoPrd01/vivo-notifications/EscutarEnviar",
+            "type": "String"
+        },
+        "authorizationRules_Gerenciar_name_2": {
+            "defaultValue": "LtmVivoPrd01/vivo-notifications/Gerenciar",
+            "type": "String"
+        },
+        "AuthorizationRules_RootManageSharedAccessKey_name_1": {
+            "defaultValue": "ltmvivoprd01-ts/RootManageSharedAccessKey",
+            "type": "String"
+        },
+        "queues_email_name_1": {
+            "defaultValue": "ltmvivoprd01-ts/email",
+            "type": "String"
+        },
+        "queues_sms_name_1": {
+            "defaultValue": "ltmvivoprd01-ts/sms",
+            "type": "String"
+        },
+        "authorizationRules_Manage_name": {
+            "defaultValue": "ltmvivoprd01-ts/email/Manage",
+            "type": "String"
+        },
+        "authorizationRules_Send_name": {
+            "defaultValue": "ltmvivoprd01-ts/email/Send",
+            "type": "String"
+        },
+        "authorizationRules_Manage_name_1": {
+            "defaultValue": "ltmvivoprd01-ts/sms/Manage",
+            "type": "String"
+        },
+        "authorizationRules_Send_name_1": {
+            "defaultValue": "ltmvivoprd01-ts/sms/Send",
+            "type": "String"
+        },
+        "databases_DB_Vivo_NPP_name": {
+            "defaultValue": "ltmvivoprd01/DB_Vivo_NPP",
+            "type": "String"
+        },
+        "databases_DB_Vivo_NPP_TS_name": {
+            "defaultValue": "ltmvivoprd01/DB_Vivo_NPP_TS",
+            "type": "String"
+        },
+        "databases_master_name": {
+            "defaultValue": "ltmvivoprd01/master",
+            "type": "String"
+        },
+        "firewallRules_AllowAllWindowsAzureIps_name": {
+            "defaultValue": "ltmvivoprd01/AllowAllWindowsAzureIps",
+            "type": "String"
+        },
+        "firewallRules_API_FORA_name": {
+            "defaultValue": "ltmvivoprd01/API FORA",
+            "type": "String"
+        },
+        "firewallRules_API_FORA_2_name": {
+            "defaultValue": "ltmvivoprd01/API FORA 2",
+            "type": "String"
+        },
+        "firewallRules_API_FORA_3_name": {
+            "defaultValue": "ltmvivoprd01/API FORA 3",
+            "type": "String"
+        },
+        "firewallRules_API_FORA_4_name": {
+            "defaultValue": "ltmvivoprd01/API FORA 4",
+            "type": "String"
+        },
+        "firewallRules_ASE_name": {
+            "defaultValue": "ltmvivoprd01/ASE",
+            "type": "String"
+        },
+        "firewallRules_LTM1_name": {
+            "defaultValue": "ltmvivoprd01/LTM1",
+            "type": "String"
+        },
+        "firewallRules_LTM2_name": {
+            "defaultValue": "ltmvivoprd01/LTM2",
+            "type": "String"
+        },
+        "firewallRules_LTM3_name": {
+            "defaultValue": "ltmvivoprd01/LTM3",
+            "type": "String"
+        },
+        "firewallRules_LTM4_name": {
+            "defaultValue": "ltmvivoprd01/LTM4",
+            "type": "String"
+        },
+        "firewallRules_LTM5_name": {
+            "defaultValue": "ltmvivoprd01/LTM5",
+            "type": "String"
+        },
+        "firewallRules_SRV_AZU_QV_01_name": {
+            "defaultValue": "ltmvivoprd01/SRV-AZU-QV-01",
+            "type": "String"
+        },
+        "alertrules_db_vivo_npp_cpu_resourceUri": {
+            "defaultValue": "/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Sql/servers/ltmvivoprd02/databases/DB_Vivo_NPP",
+            "type": "String"
+        },
+        "alertrules_db_vivo_npp_database_size_resourceUri": {
+            "defaultValue": "/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Sql/servers/ltmvivoprd02/databases/DB_Vivo_NPP",
+            "type": "String"
+        },
+        "alertrules_db_vivo_npp_dtu_resourceUri": {
+            "defaultValue": "/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Sql/servers/ltmvivoprd02/databases/DB_Vivo_NPP",
+            "type": "String"
+        },
+        "autoscalesettings_LtmVivoPrd01_0_VivoPrd_metricResourceUri": {
+            "defaultValue": "/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Web/hostingEnvironments/LtmVivoPrd01/workerPools/0",
+            "type": "String"
+        },
+        "autoscalesettings_LtmVivoPrd01_0_VivoPrd_metricResourceUri_1": {
+            "defaultValue": "/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Web/hostingEnvironments/LtmVivoPrd01/workerPools/0",
+            "type": "String"
+        },
+        "autoscalesettings_LtmVivoPrd01_0_VivoPrd_metricResourceUri_2": {
+            "defaultValue": "/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Web/hostingEnvironments/LtmVivoPrd01/workerPools/0",
+            "type": "String"
+        },
+        "autoscalesettings_LtmVivoPrd01_0_VivoPrd_metricResourceUri_3": {
+            "defaultValue": "/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Web/hostingEnvironments/LtmVivoPrd01/workerPools/0",
+            "type": "String"
+        },
+        "autoscalesettings_LtmVivoPrd01_0_VivoPrd_targetResourceUri": {
+            "defaultValue": "/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Web/hostingEnvironments/LtmVivoPrd01/workerPools/0",
+            "type": "String"
+        },
+        "autoscalesettings_LtmVivoPrd01_default_VivoPrd_metricResourceUri": {
+            "defaultValue": "/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Web/hostingEnvironments/LtmVivoPrd01/multiRolePools/default",
+            "type": "String"
+        },
+        "autoscalesettings_LtmVivoPrd01_default_VivoPrd_metricResourceUri_1": {
+            "defaultValue": "/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Web/hostingEnvironments/LtmVivoPrd01/multiRolePools/default",
+            "type": "String"
+        },
+        "autoscalesettings_LtmVivoPrd01_default_VivoPrd_metricResourceUri_2": {
+            "defaultValue": "/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Web/hostingEnvironments/LtmVivoPrd01/multiRolePools/default",
+            "type": "String"
+        },
+        "autoscalesettings_LtmVivoPrd01_default_VivoPrd_metricResourceUri_3": {
+            "defaultValue": "/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Web/hostingEnvironments/LtmVivoPrd01/multiRolePools/default",
+            "type": "String"
+        },
+        "autoscalesettings_LtmVivoPrd01_default_VivoPrd_targetResourceUri": {
+            "defaultValue": "/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Web/hostingEnvironments/LtmVivoPrd01/multiRolePools/default",
+            "type": "String"
+        },
+        "autoscalesettings_LtmVivoPrdAse01_0_VivoPrd_targetResourceUri": {
+            "defaultValue": "/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Web/hostingEnvironments/LtmVivoPrdAse01/workerPools/0",
+            "type": "String"
+        },
+        "autoscalesettings_LtmVivoPrdAse01_default_VivoPrd_metricResourceUri": {
+            "defaultValue": "/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Web/hostingEnvironments/LtmVivoPrdAse01/multiRolePools/default",
+            "type": "String"
+        },
+        "autoscalesettings_LtmVivoPrdAse01_default_VivoPrd_metricResourceUri_1": {
+            "defaultValue": "/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Web/hostingEnvironments/LtmVivoPrdAse01/multiRolePools/default",
+            "type": "String"
+        },
+        "autoscalesettings_LtmVivoPrdAse01_default_VivoPrd_metricResourceUri_2": {
+            "defaultValue": "/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Web/hostingEnvironments/LtmVivoPrdAse01/multiRolePools/default",
+            "type": "String"
+        },
+        "autoscalesettings_LtmVivoPrdAse01_default_VivoPrd_metricResourceUri_3": {
+            "defaultValue": "/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Web/hostingEnvironments/LtmVivoPrdAse01/multiRolePools/default",
+            "type": "String"
+        },
+        "autoscalesettings_LtmVivoPrdAse01_default_VivoPrd_targetResourceUri": {
+            "defaultValue": "/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Web/hostingEnvironments/LtmVivoPrdAse01/multiRolePools/default",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.ApiManagement/service/ltmvivoprd01'.",
+            "type": "Microsoft.ApiManagement/service",
+            "sku": {
+                "name": "Standard",
+                "capacity": 1
+            },
+            "name": "[parameters('service_ltmvivoprd01_name')]",
+            "apiVersion": "2016-07-07",
+            "location": "East US 2",
+            "tags": {},
+            "properties": {
+                "publisherEmail": "administrador.ti@grupoltm.com.br",
+                "publisherName": "Grupo LTM",
+                "provisioningState": "Succeeded",
+                "targetProvisioningState": "",
+                "createdAtUtc": "2016-06-14T13:50:16.4569324Z",
+                "runtimeUrl": "[concat('https://', parameters('service_ltmvivoprd01_name'),'.azure-api.net')]",
+                "portalUrl": "[concat('https://', parameters('service_ltmvivoprd01_name'),'.portal.azure-api.net')]",
+                "managementApiUrl": "[concat('https://', parameters('service_ltmvivoprd01_name'),'.management.azure-api.net')]",
+                "scmUrl": "[concat('https://', parameters('service_ltmvivoprd01_name'),'.scm.azure-api.net')]",
+                "addresserEmail": null,
+                "hostnameConfigurations": [
+                    {
+                        "type": 1,
+                        "hostname": "apiman.programadepontosvivo.com.br",
+                        "certificate": {
+                            "expiry": "2019-03-10T23:59:59+00:00",
+                            "thumbprint": "6904F471D50CC0B9C0B1E777DF5F67F74A269A93",
+                            "subject": "CN=*.programadepontosvivo.com.br, OU=IT, O=Web Premios Comercio e Servicos Promocionais Ltda, L=Barueri, S=Sao Paulo, C=BR"
+                        }
+                    },
+                    {
+                        "type": 2,
+                        "hostname": "apiman-portal.programadepontosvivo.com.br",
+                        "certificate": {
+                            "expiry": "2019-03-10T23:59:59+00:00",
+                            "thumbprint": "6904F471D50CC0B9C0B1E777DF5F67F74A269A93",
+                            "subject": "CN=*.programadepontosvivo.com.br, OU=IT, O=Web Premios Comercio e Servicos Promocionais Ltda, L=Barueri, S=Sao Paulo, C=BR"
+                        }
+                    }
+                ],
+                "staticIPs": [
+                    "137.116.93.64"
+                ],
+                "additionalLocations": null,
+                "vpnconfiguration": null,
+                "customProperties": null,
+                "vpnType": 0
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Cache/Redis/LtmVivoPrd01-TS'.",
+            "type": "Microsoft.Cache/Redis",
+            "name": "[parameters('Redis_LtmVivoPrd01_TS_name')]",
+            "apiVersion": "2016-04-01",
+            "location": "East US",
+            "tags": {},
+            "properties": {
+                "redisVersion": "3.2",
+                "sku": {
+                    "name": "Standard",
+                    "family": "C",
+                    "capacity": 1
+                },
+                "enableNonSslPort": true,
+                "redisConfiguration": {
+                    "maxclients": "1000",
+                    "maxmemory-reserved": "50",
+                    "maxmemory-delta": "50"
+                }
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Cache/Redis/LtmVivoPrd01'.",
+            "type": "Microsoft.Cache/Redis",
+            "name": "[parameters('Redis_LtmVivoPrd01_name')]",
+            "apiVersion": "2016-04-01",
+            "location": "East US 2",
+            "tags": {},
+            "properties": {
+                "redisVersion": "3.2",
+                "sku": {
+                    "name": "Standard",
+                    "family": "C",
+                    "capacity": 2
+                },
+                "enableNonSslPort": false,
+                "redisConfiguration": {
+                    "maxclients": "2000",
+                    "maxmemory-reserved": "100",
+                    "maxmemory-delta": "100"
+                }
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/vivoprd/providers/microsoft.insights/alertrules/proactive diagnostics - ltmvivoprdgatewayapi01'.",
+            "type": "microsoft.insights/alertrules",
+            "name": "[parameters('alertrules_proactive_diagnostics___ltmvivoprdgatewayapi01_name')]",
+            "apiVersion": "2014-04-01",
+            "location": "East US",
+            "tags": {
+                "hidden-link:/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourcegroups/vivoprd/providers/microsoft.insights/components/ltmvivoprdgatewayapi01": "Resource"
+            },
+            "properties": {
+                "name": "[parameters('alertrules_proactive_diagnostics___ltmvivoprdgatewayapi01_name')]",
+                "description": "",
+                "isEnabled": true,
+                "condition": {
+                    "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
+                    "dataSource": {
+                        "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
+                        "resourceUri": "[resourceId('microsoft.insights/components', parameters('components_ltmvivoprdgatewayapi01_name'))]",
+                        "metricName": "advanced::A3108E3D-5E26-44CF-B232-783F5E20EF10::ewAiAEgAeQBwAGUAcgBpAG8AbgBBAHAAcABsAGkAYwBhAHQAaQBvAG4AUwBpAGQAIgA6AG4AdQBsAGwALAAiAEgAeQBwAGUAcgBpAG8AbgBTAHUAYgBqAGUAYwB0AFMAaQBkACIAOgBuAHUAbABsACwAIgBIAHkAcABlAHIAaQBvAG4ATwBiAHMAZQByAHYAZQByAFMAaQBkACIAOgBuAHUAbABsACwAIgBDAHUAcwB0AG8AbQBlAHIAQQBjAGMAbwB1AG4AdABJAGQAIgA6ACIAMAAwADAAMAAwADAAMAAwAC0AMAAwADAAMAAtADAAMAAwADAALQAwADAAMAAwAC0AMAAwADAAMAAwADAAMAAwADAAMAAwADAAIgAsACIAQQBwAHAAbABpAGMAYQB0AGkAbwBuAE4AYQBtAGUAIgA6AG4AdQBsAGwALAAiAEEAcABwAGwAaQBjAGEAdABpAG8AbgBJAGQAIgA6AG4AdQBsAGwALAAiAFcAaQBuAGQAbwB3AFMAaQB6AGUASQBuAE0AaQBuAHUAdABlAHMAIgA6ADYAMAAsACIATQBlAHQAcgBpAGMATgBhAG0AZQAiADoAIgAiACwAIgBUAGgAcgBlAHMAaABvAGwAZAAiADoAMgAuADAALAAiAEEAbABlAHIAdABUAGUAbQBwAGwAYQB0AGUASQBkACIAOgAiACIALAAiAFIAdQBsAGUASQBkACIAOgAiACIALAAiAFIAdQBsAGUATgBhAG0AZQAiADoAIgAiACwAIgBSAHUAbABlAEQAZQBzAGMAcgBpAHAAdABpAG8AbgAiADoAIgAiACwAIgBSAGUAcwBvAHUAcgBjAGUASQBkACIAOgBuAHUAbABsACwAIgBTAHUAYgBzAGMAcgBpAHAAdABpAG8AbgBJAGQAIgA6AG4AdQBsAGwALAAiAEEAZwBnAHIAZQBnAGEAdABlAEYAdQBuAGMAdABpAG8AbgAiADoAIgAiACwAIgBDAG8AbQBwAGEAcgBpAHMAbwBuAE8AcABlAHIAYQB0AG8AcgAiADoAIgB7AFwAIgBCAGEAcwBlAGwAaQBuAGUAVABpAG0AZQBzAHAAYQBuAFwAIgA6AFwAIgAwADAAOgA0ADAAOgAwADAAXAAiACwAXAAiAEkAbgBzAGkAZwBoAHQAcwBTAGUAcgB2AGkAYwBlAEwAYQBnAFwAIgA6AFwAIgAwADAAOgAwADAAOgAwADAAXAAiACwAXAAiAEIAdQBmAGYAZQByAFQAaQBtAGUAXAAiADoAXAAiADAAMAA6ADAAMQA6ADAAMABcACIALABcACIAQgBsAG8AYgBTAHQAbwByAGEAZwBlAEwAbwBnAGcAaQBuAGcARQBuAGEAYgBsAGUAZABcACIAOgBmAGEAbABzAGUALABcACIAVQBzAGUAcgBTAHUAcABwAHIAZQBzAHMAaQBvAG4AcwBcACIAOgBuAHUAbABsACwAXAAiAFAAcgBvAGYAaQBsAGUASQBkAFwAIgA6ADMAOQA5ADcAOQAwADQALABcACIARQBtAGEAaQBsAFQAeQBwAGUAXAAiADoAMAAsAFwAIgBSAGEAdwBQAHIAbwBhAGMAdABpAHYAZQBSAHUAbABlAEMAbwBuAGYAaQBnAFwAIgA6AG4AdQBsAGwAfQAiACwAIgBFAG4AYQBiAGwAZQBTAGUAbgBkAEUAbQBhAGkAbABUAG8AQwB1AHMAdABvAG0AIgA6AGYAYQBsAHMAZQAsACIAQwB1AHMAdABvAG0ARQBtAGEAaQBsAHMARQBuAGMAbwBkAGUAZAAiADoAIgAiACwAIgBFAG4AYQBiAGwAZQBTAGUAbgBkAEUAbQBhAGkAbABUAG8ATwB3AG4AZQByAHMAIgA6AGYAYQBsAHMAZQB9AA=="
+                    },
+                    "threshold": 2,
+                    "windowSize": "PT1H"
+                },
+                "action": {
+                    "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleEmailAction",
+                    "sendToServiceOwners": true,
+                    "customEmails": []
+                }
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('microsoft.insights/components', parameters('components_ltmvivoprdgatewayapi01_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/microsoft.insights/alertrules/db_vivo_npp_alert_cpu'.",
+            "type": "microsoft.insights/alertrules",
+            "name": "[parameters('alertrules_db_vivo_npp_alert_cpu_name')]",
+            "apiVersion": "2014-04-01",
+            "location": "eastus2",
+            "tags": {
+                "hidden-link:/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Sql/servers/ltmvivoprd01/databases/DB_Vivo_NPP": "Resource"
+            },
+            "properties": {
+                "name": "[parameters('alertrules_db_vivo_npp_alert_cpu_name')]",
+                "description": "CPU >= 95%",
+                "isEnabled": true,
+                "condition": {
+                    "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
+                    "dataSource": {
+                        "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
+                        "resourceUri": "[resourceId('Microsoft.Sql/servers/databases', parameters('databases_DB_Vivo_NPP_name'))]",
+                        "metricNamespace": "",
+                        "metricName": "cpu_percent"
+                    },
+                    "operator": "GreaterThanOrEqual",
+                    "threshold": 95,
+                    "windowSize": "PT5M"
+                },
+                "action": {
+                    "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleEmailAction",
+                    "customEmails": [
+                        "dba@grupoltm.com.br"
+                    ]
+                }
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers/databases', parameters('databases_DB_Vivo_NPP_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/microsoft.insights/alertrules/db_vivo_npp_alert_dtu'.",
+            "type": "microsoft.insights/alertrules",
+            "name": "[parameters('alertrules_db_vivo_npp_alert_dtu_name')]",
+            "apiVersion": "2014-04-01",
+            "location": "eastus2",
+            "tags": {
+                "hidden-link:/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Sql/servers/ltmvivoprd01/databases/DB_Vivo_NPP": "Resource"
+            },
+            "properties": {
+                "name": "[parameters('alertrules_db_vivo_npp_alert_dtu_name')]",
+                "description": "DTU > Limit-100",
+                "isEnabled": true,
+                "condition": {
+                    "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
+                    "dataSource": {
+                        "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
+                        "resourceUri": "[resourceId('Microsoft.Sql/servers/databases', parameters('databases_DB_Vivo_NPP_name'))]",
+                        "metricNamespace": "",
+                        "metricName": "dtu_limit"
+                    },
+                    "threshold": 400,
+                    "windowSize": "PT1H"
+                },
+                "action": {
+                    "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleEmailAction",
+                    "customEmails": [
+                        "dba@grupoltm.com.br"
+                    ]
+                }
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers/databases', parameters('databases_DB_Vivo_NPP_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/microsoft.insights/alertrules/db_vivo_npp_alert_size'.",
+            "type": "microsoft.insights/alertrules",
+            "name": "[parameters('alertrules_db_vivo_npp_alert_size_name')]",
+            "apiVersion": "2014-04-01",
+            "location": "eastus2",
+            "tags": {
+                "hidden-link:/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Sql/servers/ltmvivoprd01/databases/DB_Vivo_NPP": "Resource"
+            },
+            "properties": {
+                "name": "[parameters('alertrules_db_vivo_npp_alert_size_name')]",
+                "description": "Size > 90%",
+                "isEnabled": true,
+                "condition": {
+                    "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
+                    "dataSource": {
+                        "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
+                        "resourceUri": "[resourceId('Microsoft.Sql/servers/databases', parameters('databases_DB_Vivo_NPP_name'))]",
+                        "metricNamespace": "",
+                        "metricName": "storage_percent"
+                    },
+                    "threshold": 90,
+                    "windowSize": "PT5M"
+                },
+                "action": {
+                    "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleEmailAction",
+                    "customEmails": [
+                        "dba@grupoltm.com.br"
+                    ]
+                }
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers/databases', parameters('databases_DB_Vivo_NPP_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/microsoft.insights/alertrules/db_vivo_npp_cpu'.",
+            "type": "microsoft.insights/alertrules",
+            "name": "[parameters('alertrules_db_vivo_npp_cpu_name')]",
+            "apiVersion": "2014-04-01",
+            "location": "eastus2",
+            "tags": {
+                "hidden-link:/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Sql/servers/ltmvivoprd02/databases/DB_Vivo_NPP": "Resource"
+            },
+            "properties": {
+                "name": "[parameters('alertrules_db_vivo_npp_cpu_name')]",
+                "description": "cpu > 95%",
+                "condition": {
+                    "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
+                    "dataSource": {
+                        "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
+                        "resourceUri": "[parameters('alertrules_db_vivo_npp_cpu_resourceUri')]",
+                        "metricNamespace": "",
+                        "metricName": "cpu_percent"
+                    },
+                    "threshold": 95,
+                    "windowSize": "PT5M"
+                },
+                "action": {
+                    "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleEmailAction",
+                    "customEmails": [
+                        "dba@grupoltm.com.br"
+                    ]
+                }
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/microsoft.insights/alertrules/db_vivo_npp_database_size'.",
+            "type": "microsoft.insights/alertrules",
+            "name": "[parameters('alertrules_db_vivo_npp_database_size_name')]",
+            "apiVersion": "2014-04-01",
+            "location": "eastus2",
+            "tags": {
+                "hidden-link:/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Sql/servers/ltmvivoprd02/databases/DB_Vivo_NPP": "Resource"
+            },
+            "properties": {
+                "name": "[parameters('alertrules_db_vivo_npp_database_size_name')]",
+                "description": "database size > 90%",
+                "condition": {
+                    "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
+                    "dataSource": {
+                        "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
+                        "resourceUri": "[parameters('alertrules_db_vivo_npp_database_size_resourceUri')]",
+                        "metricNamespace": "",
+                        "metricName": "storage_percent"
+                    },
+                    "threshold": 90,
+                    "windowSize": "PT5M"
+                },
+                "action": {
+                    "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleEmailAction",
+                    "customEmails": [
+                        "dba@grupoltm.com.br"
+                    ]
+                }
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/microsoft.insights/alertrules/db_vivo_npp_dtu'.",
+            "type": "microsoft.insights/alertrules",
+            "name": "[parameters('alertrules_db_vivo_npp_dtu_name')]",
+            "apiVersion": "2014-04-01",
+            "location": "eastus2",
+            "tags": {
+                "hidden-link:/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Sql/servers/ltmvivoprd02/databases/DB_Vivo_NPP": "Resource"
+            },
+            "properties": {
+                "name": "[parameters('alertrules_db_vivo_npp_dtu_name')]",
+                "description": "dtu > 90%",
+                "condition": {
+                    "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
+                    "dataSource": {
+                        "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
+                        "resourceUri": "[parameters('alertrules_db_vivo_npp_dtu_resourceUri')]",
+                        "metricNamespace": "",
+                        "metricName": "dtu_consumption_percent"
+                    },
+                    "threshold": 90,
+                    "windowSize": "PT5M"
+                },
+                "action": {
+                    "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleEmailAction",
+                    "customEmails": [
+                        "dba@grupoltm.com.br"
+                    ]
+                }
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/vivoprd/providers/microsoft.insights/alertrules/db_vivo_npp_new_cpu'.",
+            "type": "microsoft.insights/alertrules",
+            "name": "[parameters('alertrules_db_vivo_npp_new_cpu_name')]",
+            "apiVersion": "2014-04-01",
+            "location": "eastus2",
+            "tags": {
+                "hidden-link:/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/vivoprd/providers/Microsoft.Sql/servers/ltmvivoprd01/databases/DB_VIVO_NPP_New": "Resource"
+            },
+            "properties": {
+                "name": "[parameters('alertrules_db_vivo_npp_new_cpu_name')]",
+                "description": "cpu > 95%",
+                "condition": {
+                    "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
+                    "dataSource": {
+                        "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
+                        "resourceUri": "[concat(resourceId('Microsoft.Sql/servers/databases', parameters('databases_DB_Vivo_NPP_name')), '_New')]",
+                        "metricNamespace": "",
+                        "metricName": "cpu_percent"
+                    },
+                    "threshold": 95,
+                    "windowSize": "PT5M"
+                },
+                "action": {
+                    "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleEmailAction",
+                    "customEmails": [
+                        "dba@grupoltm.com.br"
+                    ]
+                }
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_ltmvivoprd01_name'))]",
+                "[resourceId('Microsoft.Sql/servers/databases', parameters('databases_DB_Vivo_NPP_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/vivoprd/providers/microsoft.insights/alertrules/db_vivo_npp_new_dtu'.",
+            "type": "microsoft.insights/alertrules",
+            "name": "[parameters('alertrules_db_vivo_npp_new_dtu_name')]",
+            "apiVersion": "2014-04-01",
+            "location": "eastus2",
+            "tags": {
+                "hidden-link:/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/vivoprd/providers/Microsoft.Sql/servers/ltmvivoprd01/databases/DB_VIVO_NPP_New": "Resource"
+            },
+            "properties": {
+                "name": "[parameters('alertrules_db_vivo_npp_new_dtu_name')]",
+                "description": "dtu > 4",
+                "condition": {
+                    "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
+                    "dataSource": {
+                        "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
+                        "resourceUri": "[concat(resourceId('Microsoft.Sql/servers/databases', parameters('databases_DB_Vivo_NPP_name')), '_New')]",
+                        "metricNamespace": "",
+                        "metricName": "dtu_used"
+                    },
+                    "threshold": 4,
+                    "windowSize": "PT5M"
+                },
+                "action": {
+                    "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleEmailAction",
+                    "customEmails": [
+                        "dba@grupoltm.com.br"
+                    ]
+                }
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_ltmvivoprd01_name'))]",
+                "[resourceId('Microsoft.Sql/servers/databases', parameters('databases_DB_Vivo_NPP_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/vivoprd/providers/microsoft.insights/alertrules/db_vivo_npp_new_size'.",
+            "type": "microsoft.insights/alertrules",
+            "name": "[parameters('alertrules_db_vivo_npp_new_size_name')]",
+            "apiVersion": "2014-04-01",
+            "location": "eastus2",
+            "tags": {
+                "hidden-link:/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/vivoprd/providers/Microsoft.Sql/servers/ltmvivoprd01/databases/DB_VIVO_NPP_New": "Resource"
+            },
+            "properties": {
+                "name": "[parameters('alertrules_db_vivo_npp_new_size_name')]",
+                "description": "database size > 90%",
+                "condition": {
+                    "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
+                    "dataSource": {
+                        "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
+                        "resourceUri": "[concat(resourceId('Microsoft.Sql/servers/databases', parameters('databases_DB_Vivo_NPP_name')), '_New')]",
+                        "metricNamespace": "",
+                        "metricName": "storage_percent"
+                    },
+                    "threshold": 95,
+                    "windowSize": "PT5M"
+                },
+                "action": {
+                    "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleEmailAction",
+                    "customEmails": [
+                        "dba@grupoltm.com.br"
+                    ]
+                }
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_ltmvivoprd01_name'))]",
+                "[resourceId('Microsoft.Sql/servers/databases', parameters('databases_DB_Vivo_NPP_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/microsoft.insights/alertrules/VerificarLogins'.",
+            "type": "microsoft.insights/alertrules",
+            "name": "[parameters('alertrules_VerificarLogins_name')]",
+            "apiVersion": "2014-04-01",
+            "location": "eastus2",
+            "tags": {
+                "hidden-link:/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Sql/servers/ltmvivoprd01/databases/DB_Vivo_NPP": "Resource"
+            },
+            "properties": {
+                "name": "[parameters('alertrules_VerificarLogins_name')]",
+                "description": "Erro em Login na base",
+                "isEnabled": true,
+                "condition": {
+                    "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
+                    "dataSource": {
+                        "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
+                        "resourceUri": "[resourceId('Microsoft.Sql/servers/databases', parameters('databases_DB_Vivo_NPP_name'))]",
+                        "metricNamespace": "",
+                        "metricName": "connection_failed"
+                    },
+                    "threshold": 1,
+                    "windowSize": "PT1H"
+                },
+                "action": {
+                    "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleEmailAction",
+                    "customEmails": [
+                        "smagalhaes@grupoltm.com.br"
+                    ]
+                }
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers/databases', parameters('databases_DB_Vivo_NPP_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/microsoft.insights/autoscalesettings/LtmVivoPrd01-0-VivoPrd'.",
+            "type": "microsoft.insights/autoscalesettings",
+            "name": "[parameters('autoscalesettings_LtmVivoPrd01_0_VivoPrd_name')]",
+            "apiVersion": "2014-04-01",
+            "location": "eastus2",
+            "tags": {
+                "hidden-link:/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Web/hostingEnvironments/LtmVivoPrd01/workerPools/0": "Resource"
+            },
+            "properties": {
+                "profiles": [
+                    {
+                        "name": "Default",
+                        "capacity": {
+                            "minimum": "4",
+                            "maximum": "8",
+                            "default": "4"
+                        },
+                        "rules": [
+                            {
+                                "metricTrigger": {
+                                    "metricName": "CpuPercentage",
+                                    "metricNamespace": "",
+                                    "metricResourceUri": "[parameters('autoscalesettings_LtmVivoPrd01_0_VivoPrd_metricResourceUri')]",
+                                    "timeGrain": "PT1M",
+                                    "statistic": "Average",
+                                    "timeWindow": "PT5M",
+                                    "timeAggregation": "Average",
+                                    "operator": "GreaterThanOrEqual",
+                                    "threshold": 80
+                                },
+                                "scaleAction": {
+                                    "direction": "Increase",
+                                    "type": "ChangeCount",
+                                    "value": "1",
+                                    "cooldown": "PT5M"
+                                }
+                            },
+                            {
+                                "metricTrigger": {
+                                    "metricName": "MemoryPercentage",
+                                    "metricNamespace": "",
+                                    "metricResourceUri": "[parameters('autoscalesettings_LtmVivoPrd01_0_VivoPrd_metricResourceUri_1')]",
+                                    "timeGrain": "PT1M",
+                                    "statistic": "Average",
+                                    "timeWindow": "PT5M",
+                                    "timeAggregation": "Average",
+                                    "operator": "GreaterThanOrEqual",
+                                    "threshold": 80
+                                },
+                                "scaleAction": {
+                                    "direction": "Increase",
+                                    "type": "ChangeCount",
+                                    "value": "1",
+                                    "cooldown": "PT5M"
+                                }
+                            },
+                            {
+                                "metricTrigger": {
+                                    "metricName": "CpuPercentage",
+                                    "metricNamespace": "",
+                                    "metricResourceUri": "[parameters('autoscalesettings_LtmVivoPrd01_0_VivoPrd_metricResourceUri_2')]",
+                                    "timeGrain": "PT1M",
+                                    "statistic": "Average",
+                                    "timeWindow": "PT10M",
+                                    "timeAggregation": "Average",
+                                    "operator": "LessThanOrEqual",
+                                    "threshold": 60
+                                },
+                                "scaleAction": {
+                                    "direction": "Decrease",
+                                    "type": "ChangeCount",
+                                    "value": "1",
+                                    "cooldown": "PT5M"
+                                }
+                            },
+                            {
+                                "metricTrigger": {
+                                    "metricName": "MemoryPercentage",
+                                    "metricNamespace": "",
+                                    "metricResourceUri": "[parameters('autoscalesettings_LtmVivoPrd01_0_VivoPrd_metricResourceUri_3')]",
+                                    "timeGrain": "PT1M",
+                                    "statistic": "Average",
+                                    "timeWindow": "PT10M",
+                                    "timeAggregation": "Average",
+                                    "operator": "LessThanOrEqual",
+                                    "threshold": 60
+                                },
+                                "scaleAction": {
+                                    "direction": "Decrease",
+                                    "type": "ChangeCount",
+                                    "value": "1",
+                                    "cooldown": "PT5M"
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "enabled": true,
+                "name": "[parameters('autoscalesettings_LtmVivoPrd01_0_VivoPrd_name')]",
+                "targetResourceUri": "[parameters('autoscalesettings_LtmVivoPrd01_0_VivoPrd_targetResourceUri')]"
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/microsoft.insights/autoscalesettings/LtmVivoPrd01-default-VivoPrd'.",
+            "type": "microsoft.insights/autoscalesettings",
+            "name": "[parameters('autoscalesettings_LtmVivoPrd01_default_VivoPrd_name')]",
+            "apiVersion": "2014-04-01",
+            "location": "eastus2",
+            "tags": {
+                "hidden-link:/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Web/hostingEnvironments/LtmVivoPrd01/multiRolePools/default": "Resource"
+            },
+            "properties": {
+                "profiles": [
+                    {
+                        "name": "LtmVivoPrd",
+                        "capacity": {
+                            "minimum": "2",
+                            "maximum": "8",
+                            "default": "2"
+                        },
+                        "rules": [
+                            {
+                                "metricTrigger": {
+                                    "metricName": "CpuPercentage",
+                                    "metricNamespace": "",
+                                    "metricResourceUri": "[parameters('autoscalesettings_LtmVivoPrd01_default_VivoPrd_metricResourceUri')]",
+                                    "timeGrain": "PT1M",
+                                    "statistic": "Average",
+                                    "timeWindow": "PT5M",
+                                    "timeAggregation": "Average",
+                                    "operator": "GreaterThanOrEqual",
+                                    "threshold": 80
+                                },
+                                "scaleAction": {
+                                    "direction": "Increase",
+                                    "type": "ChangeCount",
+                                    "value": "1",
+                                    "cooldown": "PT5M"
+                                }
+                            },
+                            {
+                                "metricTrigger": {
+                                    "metricName": "MemoryPercentage",
+                                    "metricNamespace": "",
+                                    "metricResourceUri": "[parameters('autoscalesettings_LtmVivoPrd01_default_VivoPrd_metricResourceUri_1')]",
+                                    "timeGrain": "PT1M",
+                                    "statistic": "Average",
+                                    "timeWindow": "PT5M",
+                                    "timeAggregation": "Average",
+                                    "operator": "GreaterThanOrEqual",
+                                    "threshold": 80
+                                },
+                                "scaleAction": {
+                                    "direction": "Increase",
+                                    "type": "ChangeCount",
+                                    "value": "1",
+                                    "cooldown": "PT5M"
+                                }
+                            },
+                            {
+                                "metricTrigger": {
+                                    "metricName": "CpuPercentage",
+                                    "metricNamespace": "",
+                                    "metricResourceUri": "[parameters('autoscalesettings_LtmVivoPrd01_default_VivoPrd_metricResourceUri_2')]",
+                                    "timeGrain": "PT1M",
+                                    "statistic": "Average",
+                                    "timeWindow": "PT10M",
+                                    "timeAggregation": "Average",
+                                    "operator": "LessThanOrEqual",
+                                    "threshold": 60
+                                },
+                                "scaleAction": {
+                                    "direction": "Decrease",
+                                    "type": "ChangeCount",
+                                    "value": "1",
+                                    "cooldown": "PT5M"
+                                }
+                            },
+                            {
+                                "metricTrigger": {
+                                    "metricName": "MemoryPercentage",
+                                    "metricNamespace": "",
+                                    "metricResourceUri": "[parameters('autoscalesettings_LtmVivoPrd01_default_VivoPrd_metricResourceUri_3')]",
+                                    "timeGrain": "PT1M",
+                                    "statistic": "Average",
+                                    "timeWindow": "PT10M",
+                                    "timeAggregation": "Average",
+                                    "operator": "LessThanOrEqual",
+                                    "threshold": 60
+                                },
+                                "scaleAction": {
+                                    "direction": "Decrease",
+                                    "type": "ChangeCount",
+                                    "value": "1",
+                                    "cooldown": "PT5M"
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "enabled": true,
+                "name": "[parameters('autoscalesettings_LtmVivoPrd01_default_VivoPrd_name')]",
+                "targetResourceUri": "[parameters('autoscalesettings_LtmVivoPrd01_default_VivoPrd_targetResourceUri')]"
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/microsoft.insights/autoscalesettings/LtmVivoPrd01-VivoPrd'.",
+            "type": "microsoft.insights/autoscalesettings",
+            "name": "[parameters('autoscalesettings_LtmVivoPrd01_VivoPrd_name')]",
+            "apiVersion": "2014-04-01",
+            "location": "eastus2",
+            "tags": {
+                "hidden-link:/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Web/serverfarms/LtmVivoPrd01": "Resource"
+            },
+            "properties": {
+                "profiles": [
+                    {
+                        "name": "LtmVivoPrd",
+                        "capacity": {
+                            "minimum": "3",
+                            "maximum": "3",
+                            "default": "3"
+                        },
+                        "rules": [
+                            {
+                                "metricTrigger": {
+                                    "metricName": "CpuPercentage",
+                                    "metricNamespace": "",
+                                    "metricResourceUri": "[concat(resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_LtmVivoPrd_name')), '01')]",
+                                    "timeGrain": "PT1M",
+                                    "statistic": "Average",
+                                    "timeWindow": "PT5M",
+                                    "timeAggregation": "Average",
+                                    "operator": "GreaterThanOrEqual",
+                                    "threshold": 80
+                                },
+                                "scaleAction": {
+                                    "direction": "Increase",
+                                    "type": "ChangeCount",
+                                    "value": "1",
+                                    "cooldown": "PT5M"
+                                }
+                            },
+                            {
+                                "metricTrigger": {
+                                    "metricName": "MemoryPercentage",
+                                    "metricNamespace": "",
+                                    "metricResourceUri": "[concat(resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_LtmVivoPrd_name')), '01')]",
+                                    "timeGrain": "PT1M",
+                                    "statistic": "Average",
+                                    "timeWindow": "PT5M",
+                                    "timeAggregation": "Average",
+                                    "operator": "GreaterThanOrEqual",
+                                    "threshold": 80
+                                },
+                                "scaleAction": {
+                                    "direction": "Increase",
+                                    "type": "ChangeCount",
+                                    "value": "1",
+                                    "cooldown": "PT5M"
+                                }
+                            },
+                            {
+                                "metricTrigger": {
+                                    "metricName": "CpuPercentage",
+                                    "metricNamespace": "",
+                                    "metricResourceUri": "[concat(resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_LtmVivoPrd_name')), '01')]",
+                                    "timeGrain": "PT1M",
+                                    "statistic": "Average",
+                                    "timeWindow": "PT10M",
+                                    "timeAggregation": "Average",
+                                    "operator": "LessThanOrEqual",
+                                    "threshold": 60
+                                },
+                                "scaleAction": {
+                                    "direction": "Decrease",
+                                    "type": "ChangeCount",
+                                    "value": "1",
+                                    "cooldown": "PT5M"
+                                }
+                            },
+                            {
+                                "metricTrigger": {
+                                    "metricName": "MemoryPercentage",
+                                    "metricNamespace": "",
+                                    "metricResourceUri": "[concat(resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_LtmVivoPrd_name')), '01')]",
+                                    "timeGrain": "PT1M",
+                                    "statistic": "Average",
+                                    "timeWindow": "PT10M",
+                                    "timeAggregation": "Average",
+                                    "operator": "LessThanOrEqual",
+                                    "threshold": 60
+                                },
+                                "scaleAction": {
+                                    "direction": "Decrease",
+                                    "type": "ChangeCount",
+                                    "value": "1",
+                                    "cooldown": "PT5M"
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "enabled": true,
+                "name": "[parameters('autoscalesettings_LtmVivoPrd01_VivoPrd_name')]",
+                "targetResourceUri": "[concat(resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_LtmVivoPrd_name')), '01')]"
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_LtmVivoPrd_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/microsoft.insights/autoscalesettings/LtmVivoPrd-VivoPrd'.",
+            "type": "microsoft.insights/autoscalesettings",
+            "name": "[parameters('autoscalesettings_LtmVivoPrd_VivoPrd_name')]",
+            "apiVersion": "2014-04-01",
+            "location": "eastus2",
+            "tags": {
+                "hidden-link:/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Web/serverfarms/LtmVivoPrd": "Resource"
+            },
+            "properties": {
+                "profiles": [
+                    {
+                        "name": "Default",
+                        "capacity": {
+                            "minimum": "2",
+                            "maximum": "2",
+                            "default": "2"
+                        },
+                        "rules": [
+                            {
+                                "metricTrigger": {
+                                    "metricName": "CpuPercentage",
+                                    "metricNamespace": "",
+                                    "metricResourceUri": "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_LtmVivoPrd_name'))]",
+                                    "timeGrain": "PT1M",
+                                    "statistic": "Average",
+                                    "timeWindow": "PT10M",
+                                    "timeAggregation": "Average",
+                                    "operator": "GreaterThan",
+                                    "threshold": 60
+                                },
+                                "scaleAction": {
+                                    "direction": "Increase",
+                                    "type": "ChangeCount",
+                                    "value": "1",
+                                    "cooldown": "PT5M"
+                                }
+                            },
+                            {
+                                "metricTrigger": {
+                                    "metricName": "CpuPercentage",
+                                    "metricNamespace": "",
+                                    "metricResourceUri": "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_LtmVivoPrd_name'))]",
+                                    "timeGrain": "PT1M",
+                                    "statistic": "Average",
+                                    "timeWindow": "PT10M",
+                                    "timeAggregation": "Average",
+                                    "operator": "LessThan",
+                                    "threshold": 40
+                                },
+                                "scaleAction": {
+                                    "direction": "Decrease",
+                                    "type": "ChangeCount",
+                                    "value": "1",
+                                    "cooldown": "PT5M"
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "enabled": true,
+                "name": "[parameters('autoscalesettings_LtmVivoPrd_VivoPrd_name')]",
+                "targetResourceUri": "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_LtmVivoPrd_name'))]"
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_LtmVivoPrd_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/microsoft.insights/autoscalesettings/LtmVivoPrdAse01-0-VivoPrd'.",
+            "type": "microsoft.insights/autoscalesettings",
+            "name": "[parameters('autoscalesettings_LtmVivoPrdAse01_0_VivoPrd_name')]",
+            "apiVersion": "2014-04-01",
+            "location": "eastus2",
+            "tags": {
+                "hidden-link:/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Web/hostingEnvironments/LtmVivoPrdAse01/workerPools/0": "Resource"
+            },
+            "properties": {
+                "profiles": [
+                    {
+                        "name": "[parameters('autoscalesettings_LtmVivoPrdAse01_0_VivoPrd_name')]",
+                        "capacity": {
+                            "minimum": "4",
+                            "maximum": "4",
+                            "default": "4"
+                        },
+                        "rules": []
+                    }
+                ],
+                "enabled": false,
+                "name": "[parameters('autoscalesettings_LtmVivoPrdAse01_0_VivoPrd_name')]",
+                "targetResourceUri": "[parameters('autoscalesettings_LtmVivoPrdAse01_0_VivoPrd_targetResourceUri')]"
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/microsoft.insights/autoscalesettings/LtmVivoPrdAse01-default-VivoPrd'.",
+            "type": "microsoft.insights/autoscalesettings",
+            "name": "[parameters('autoscalesettings_LtmVivoPrdAse01_default_VivoPrd_name')]",
+            "apiVersion": "2014-04-01",
+            "location": "eastus2",
+            "tags": {
+                "hidden-link:/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Web/hostingEnvironments/LtmVivoPrdAse01/multiRolePools/default": "Resource"
+            },
+            "properties": {
+                "profiles": [
+                    {
+                        "name": "LtmVivoPrdAse01-FrontEnd",
+                        "capacity": {
+                            "minimum": "2",
+                            "maximum": "4",
+                            "default": "2"
+                        },
+                        "rules": [
+                            {
+                                "metricTrigger": {
+                                    "metricName": "CpuPercentage",
+                                    "metricNamespace": "",
+                                    "metricResourceUri": "[parameters('autoscalesettings_LtmVivoPrdAse01_default_VivoPrd_metricResourceUri')]",
+                                    "timeGrain": "PT1M",
+                                    "statistic": "Average",
+                                    "timeWindow": "PT5M",
+                                    "timeAggregation": "Average",
+                                    "operator": "GreaterThanOrEqual",
+                                    "threshold": 80
+                                },
+                                "scaleAction": {
+                                    "direction": "Increase",
+                                    "type": "ChangeCount",
+                                    "value": "1",
+                                    "cooldown": "PT5M"
+                                }
+                            },
+                            {
+                                "metricTrigger": {
+                                    "metricName": "MemoryPercentage",
+                                    "metricNamespace": "",
+                                    "metricResourceUri": "[parameters('autoscalesettings_LtmVivoPrdAse01_default_VivoPrd_metricResourceUri_1')]",
+                                    "timeGrain": "PT1M",
+                                    "statistic": "Average",
+                                    "timeWindow": "PT5M",
+                                    "timeAggregation": "Average",
+                                    "operator": "GreaterThanOrEqual",
+                                    "threshold": 80
+                                },
+                                "scaleAction": {
+                                    "direction": "Increase",
+                                    "type": "ChangeCount",
+                                    "value": "1",
+                                    "cooldown": "PT5M"
+                                }
+                            },
+                            {
+                                "metricTrigger": {
+                                    "metricName": "CpuPercentage",
+                                    "metricNamespace": "",
+                                    "metricResourceUri": "[parameters('autoscalesettings_LtmVivoPrdAse01_default_VivoPrd_metricResourceUri_2')]",
+                                    "timeGrain": "PT1M",
+                                    "statistic": "Average",
+                                    "timeWindow": "PT5M",
+                                    "timeAggregation": "Average",
+                                    "operator": "LessThanOrEqual",
+                                    "threshold": 60
+                                },
+                                "scaleAction": {
+                                    "direction": "Decrease",
+                                    "type": "PercentChangeCount",
+                                    "value": "1",
+                                    "cooldown": "PT5M"
+                                }
+                            },
+                            {
+                                "metricTrigger": {
+                                    "metricName": "MemoryPercentage",
+                                    "metricNamespace": "",
+                                    "metricResourceUri": "[parameters('autoscalesettings_LtmVivoPrdAse01_default_VivoPrd_metricResourceUri_3')]",
+                                    "timeGrain": "PT1M",
+                                    "statistic": "Average",
+                                    "timeWindow": "PT5M",
+                                    "timeAggregation": "Average",
+                                    "operator": "LessThanOrEqual",
+                                    "threshold": 60
+                                },
+                                "scaleAction": {
+                                    "direction": "Decrease",
+                                    "type": "ChangeCount",
+                                    "value": "1",
+                                    "cooldown": "PT5M"
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "enabled": true,
+                "name": "[parameters('autoscalesettings_LtmVivoPrdAse01_default_VivoPrd_name')]",
+                "targetResourceUri": "[parameters('autoscalesettings_LtmVivoPrdAse01_default_VivoPrd_targetResourceUri')]"
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/microsoft.insights/components/ltmvivoprdadmin01'.",
+            "type": "microsoft.insights/components",
+            "kind": "web",
+            "name": "[parameters('components_ltmvivoprdadmin01_name')]",
+            "apiVersion": "2014-04-01",
+            "location": "East US",
+            "tags": {
+                "hidden-link:/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Web/sites/LtmVivoPrdAdmin01": "Resource"
+            },
+            "properties": {
+                "ApplicationId": "[parameters('components_ltmvivoprdadmin01_name')]"
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/microsoft.insights/components/ltmvivoprdapiadmin01'.",
+            "type": "microsoft.insights/components",
+            "kind": "web",
+            "name": "[parameters('components_ltmvivoprdapiadmin01_name')]",
+            "apiVersion": "2014-04-01",
+            "location": "East US",
+            "tags": {
+                "hidden-link:/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Web/sites/LtmVivoPrdApiAdmin01": "Resource"
+            },
+            "properties": {
+                "ApplicationId": "[parameters('components_ltmvivoprdapiadmin01_name')]"
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/microsoft.insights/components/ltmvivoprdapigateway01'.",
+            "type": "microsoft.insights/components",
+            "kind": "web",
+            "name": "[parameters('components_ltmvivoprdapigateway01_name')]",
+            "apiVersion": "2014-04-01",
+            "location": "East US",
+            "tags": {
+                "hidden-link:/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Web/sites/LtmVivoPrdApiGateway01": "Resource"
+            },
+            "properties": {
+                "ApplicationId": "[parameters('components_ltmvivoprdapigateway01_name')]"
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/microsoft.insights/components/ltmvivoprdapimotorpontos01'.",
+            "type": "microsoft.insights/components",
+            "kind": "java",
+            "name": "[parameters('components_ltmvivoprdapimotorpontos01_name')]",
+            "apiVersion": "2014-04-01",
+            "location": "East US",
+            "tags": {},
+            "properties": {
+                "ApplicationId": "[parameters('components_ltmvivoprdapimotorpontos01_name')]"
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/microsoft.insights/components/ltmvivoprdbeneficios01'.",
+            "type": "microsoft.insights/components",
+            "kind": "web",
+            "name": "[parameters('components_ltmvivoprdbeneficios01_name')]",
+            "apiVersion": "2014-04-01",
+            "location": "East US",
+            "tags": {
+                "hidden-link:/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Web/sites/LtmVivoPrdBeneficios01": "Resource"
+            },
+            "properties": {
+                "ApplicationId": "[parameters('components_ltmvivoprdbeneficios01_name')]"
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/microsoft.insights/components/ltmvivoprdextratoresgate01'.",
+            "type": "microsoft.insights/components",
+            "kind": "web",
+            "name": "[parameters('components_ltmvivoprdextratoresgate01_name')]",
+            "apiVersion": "2014-04-01",
+            "location": "East US",
+            "tags": {
+                "hidden-link:/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Web/sites/LtmVivoPrdExtratoResgate01": "Resource"
+            },
+            "properties": {
+                "ApplicationId": "[parameters('components_ltmvivoprdextratoresgate01_name')]"
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/microsoft.insights/components/ltmvivoprdgatewayapi01'.",
+            "type": "microsoft.insights/components",
+            "kind": "web",
+            "name": "[parameters('components_ltmvivoprdgatewayapi01_name')]",
+            "apiVersion": "2014-04-01",
+            "location": "East US",
+            "tags": {
+                "hidden-link:/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Web/sites/LtmVivoPrdGatewayApi01": "Resource"
+            },
+            "properties": {
+                "ApplicationId": "[parameters('components_ltmvivoprdgatewayapi01_name')]"
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/microsoft.insights/components/ltmvivoprdwebjobs01'.",
+            "type": "microsoft.insights/components",
+            "kind": "web",
+            "name": "[parameters('components_ltmvivoprdwebjobs01_name')]",
+            "apiVersion": "2014-04-01",
+            "location": "East US",
+            "tags": {
+                "hidden-link:/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Web/sites/LtmVivoPrdWebJobs01": "Resource"
+            },
+            "properties": {
+                "ApplicationId": "[parameters('components_ltmvivoprdwebjobs01_name')]"
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Network/networkSecurityGroups/LtmVivoPrdAse01'.",
+            "type": "Microsoft.Network/networkSecurityGroups",
+            "name": "[parameters('networkSecurityGroups_LtmVivoPrdAse01_name')]",
+            "apiVersion": "2016-03-30",
+            "location": "eastus2",
+            "properties": {
+                "securityRules": [
+                    {
+                        "name": "HTTPS",
+                        "properties": {
+                            "protocol": "TCP",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "443",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 100,
+                            "direction": "Inbound"
+                        }
+                    },
+                    {
+                        "name": "Microsoft-454",
+                        "properties": {
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "454",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 110,
+                            "direction": "Inbound"
+                        }
+                    },
+                    {
+                        "name": "Microsoft-455",
+                        "properties": {
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "455",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 120,
+                            "direction": "Inbound"
+                        }
+                    },
+                    {
+                        "name": "FTPS",
+                        "properties": {
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "990",
+                            "sourceAddressPrefix": "187.120.4.216/29",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 130,
+                            "direction": "Inbound"
+                        }
+                    },
+                    {
+                        "name": "FTP",
+                        "properties": {
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "10001-10020",
+                            "sourceAddressPrefix": "187.120.4.216/29",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 140,
+                            "direction": "Inbound"
+                        }
+                    },
+                    {
+                        "name": "VisualStudio2015",
+                        "properties": {
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "4020",
+                            "sourceAddressPrefix": "187.120.4.216/29",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 150,
+                            "direction": "Inbound"
+                        }
+                    }
+                ]
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/vivoprd/providers/Microsoft.Network/trafficManagerProfiles/ltmvivoprdmp01'.",
+            "type": "Microsoft.Network/trafficManagerProfiles",
+            "name": "[parameters('trafficManagerProfiles_ltmvivoprdmp01_name')]",
+            "apiVersion": "2015-11-01",
+            "location": "global",
+            "properties": {
+                "profileStatus": "Enabled",
+                "trafficRoutingMethod": "Weighted",
+                "dnsConfig": {
+                    "relativeName": "[parameters('trafficManagerProfiles_ltmvivoprdmp01_name')]",
+                    "fqdn": "[concat(parameters('trafficManagerProfiles_ltmvivoprdmp01_name'),'.trafficmanager.net')]",
+                    "ttl": 300
+                },
+                "monitorConfig": {
+                    "protocol": "HTTPS",
+                    "port": 443,
+                    "path": "/"
+                },
+                "endpoints": [
+                    {
+                        "name": "MP1",
+                        "type": "Microsoft.Network/trafficManagerProfiles/externalEndpoints",
+                        "properties": {
+                            "endpointStatus": "Enabled",
+                            "target": "mp1.programadepontosvivo.com.br",
+                            "weight": 1,
+                            "priority": 1,
+                            "endpointLocation": "Brazil South"
+                        }
+                    },
+                    {
+                        "name": "MP2",
+                        "type": "Microsoft.Network/trafficManagerProfiles/externalEndpoints",
+                        "properties": {
+                            "endpointStatus": "Enabled",
+                            "target": "mp2.programadepontosvivo.com.br",
+                            "weight": 1,
+                            "priority": 2,
+                            "endpointLocation": "Brazil South"
+                        }
+                    },
+                    {
+                        "name": "MP3",
+                        "type": "Microsoft.Network/trafficManagerProfiles/externalEndpoints",
+                        "properties": {
+                            "endpointStatus": "Enabled",
+                            "target": "mp3.programadepontosvivo.com.br",
+                            "weight": 1,
+                            "priority": 3,
+                            "endpointLocation": "Brazil South"
+                        }
+                    },
+                    {
+                        "name": "MP4",
+                        "type": "Microsoft.Network/trafficManagerProfiles/externalEndpoints",
+                        "properties": {
+                            "endpointStatus": "Enabled",
+                            "target": "mp4.programadepontosvivo.com.br",
+                            "weight": 1,
+                            "priority": 4,
+                            "endpointLocation": "Brazil South"
+                        }
+                    }
+                ]
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Network/virtualNetworks/LtmVivoPrdAse01'.",
+            "type": "Microsoft.Network/virtualNetworks",
+            "name": "[parameters('virtualNetworks_LtmVivoPrdAse01_name')]",
+            "apiVersion": "2016-03-30",
+            "location": "eastus2",
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "192.168.250.0/23"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "default",
+                        "properties": {
+                            "addressPrefix": "192.168.250.0/24",
+                            "networkSecurityGroup": {
+                                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_LtmVivoPrdAse01_name'))]"
+                            }
+                        }
+                    }
+                ]
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_LtmVivoPrdAse01_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.RecoveryServices/vaults/LtmVivoPrd01'.",
+            "type": "Microsoft.RecoveryServices/vaults",
+            "sku": {
+                "name": "RS0",
+                "tier": "Standard"
+            },
+            "name": "[parameters('vaults_LtmVivoPrd01_name')]",
+            "apiVersion": "2016-06-01",
+            "location": "eastus2",
+            "properties": {},
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourcegroups/VivoPrd/providers/Microsoft.ServiceBus/namespaces/LtmVivoPrd01'.",
+            "type": "Microsoft.ServiceBus/namespaces",
+            "sku": {
+                "name": "Standard",
+                "tier": "Standard"
+            },
+            "kind": "Messaging",
+            "name": "[parameters('namespaces_LtmVivoPrd01_name')]",
+            "apiVersion": "2015-08-01",
+            "location": "East US 2",
+            "tags": {},
+            "properties": {
+                "provisioningState": "Succeeded",
+                "status": "Active",
+                "createdAt": "2016-06-10T18:29:37.537Z",
+                "serviceBusEndpoint": "[concat('https://', parameters('namespaces_LtmVivoPrd01_name'),'.servicebus.windows.net:443/')]",
+                "enabled": true,
+                "updatedAt": "2016-06-10T18:36:28.027Z"
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourcegroups/VivoPrd/providers/Microsoft.ServiceBus/namespaces/ltmvivoprd01-ts'.",
+            "type": "Microsoft.ServiceBus/namespaces",
+            "sku": {
+                "name": "Standard",
+                "tier": "Standard"
+            },
+            "kind": "Messaging",
+            "name": "[parameters('namespaces_ltmvivoprd01_ts_name')]",
+            "apiVersion": "2015-08-01",
+            "location": "East US",
+            "tags": {},
+            "properties": {
+                "provisioningState": "Succeeded",
+                "status": "Active",
+                "createdAt": "2017-01-03T21:12:31.883Z",
+                "serviceBusEndpoint": "[concat('https://', parameters('namespaces_ltmvivoprd01_ts_name'),'.servicebus.windows.net:443/')]",
+                "enabled": true,
+                "updatedAt": "2017-01-03T21:12:55.827Z"
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Sql/servers/ltmvivoprd01'.",
+            "type": "Microsoft.Sql/servers",
+            "kind": "v12.0",
+            "name": "[parameters('servers_ltmvivoprd01_name')]",
+            "apiVersion": "2014-04-01-preview",
+            "location": "East US 2",
+            "properties": {
+                "administratorLogin": "administrador",
+                "administratorLoginPassword": null,
+                "version": "12.0"
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/vivoprd/providers/Microsoft.Storage/storageAccounts/ltmvivoprdstorage01ts'.",
+            "type": "Microsoft.Storage/storageAccounts",
+            "sku": {
+                "name": "Standard_RAGRS",
+                "tier": "Standard"
+            },
+            "kind": "Storage",
+            "name": "[parameters('storageAccounts_ltmvivoprdstorage01ts_name')]",
+            "apiVersion": "2016-01-01",
+            "location": "southcentralus",
+            "tags": {},
+            "properties": {},
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/vivoprd/providers/Microsoft.Storage/storageAccounts/ltmvivoprdstorage02ts'.",
+            "type": "Microsoft.Storage/storageAccounts",
+            "sku": {
+                "name": "Standard_RAGRS",
+                "tier": "Standard"
+            },
+            "kind": "Storage",
+            "name": "[parameters('storageAccounts_ltmvivoprdstorage02ts_name')]",
+            "apiVersion": "2016-01-01",
+            "location": "southcentralus",
+            "tags": {},
+            "properties": {},
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/vivoprd/providers/Microsoft.Storage/storageAccounts/ltmvivoprdstoragetable01'.",
+            "type": "Microsoft.Storage/storageAccounts",
+            "sku": {
+                "name": "Standard_GRS",
+                "tier": "Standard"
+            },
+            "kind": "Storage",
+            "name": "[parameters('storageAccounts_ltmvivoprdstoragetable01_name')]",
+            "apiVersion": "2016-01-01",
+            "location": "eastus2",
+            "tags": {},
+            "properties": {},
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/vivoprd/providers/Microsoft.Storage/storageAccounts/ltmvivoprdstoragetable02'.",
+            "type": "Microsoft.Storage/storageAccounts",
+            "sku": {
+                "name": "Standard_GRS",
+                "tier": "Standard"
+            },
+            "kind": "Storage",
+            "name": "[parameters('storageAccounts_ltmvivoprdstoragetable02_name')]",
+            "apiVersion": "2016-01-01",
+            "location": "eastus2",
+            "tags": {},
+            "properties": {},
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/vivoprd/providers/Microsoft.Storage/storageAccounts/ltmvivoprdwj01'.",
+            "type": "Microsoft.Storage/storageAccounts",
+            "sku": {
+                "name": "Standard_GRS",
+                "tier": "Standard"
+            },
+            "kind": "Storage",
+            "name": "[parameters('storageAccounts_ltmvivoprdwj01_name')]",
+            "apiVersion": "2016-01-01",
+            "location": "eastus2",
+            "tags": {},
+            "properties": {},
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/vivoprd/providers/Microsoft.Storage/storageAccounts/ltmvivoprdwj01ts'.",
+            "type": "Microsoft.Storage/storageAccounts",
+            "sku": {
+                "name": "Standard_RAGRS",
+                "tier": "Standard"
+            },
+            "kind": "Storage",
+            "name": "[parameters('storageAccounts_ltmvivoprdwj01ts_name')]",
+            "apiVersion": "2016-01-01",
+            "location": "southcentralus",
+            "tags": {},
+            "properties": {},
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Web/certificates/6904F471D50CC0B9C0B1E777DF5F67F74A269A93#LtmVivoPrdAse01#East US 2#'.",
+            "type": "Microsoft.Web/certificates",
+            "name": "[parameters('certificates_6904F471D50CC0B9C0B1E777DF5F67F74A269A93#LtmVivoPrdAse01#East_US_2#_name')]",
+            "apiVersion": "2015-08-01",
+            "location": "East US 2",
+            "properties": {
+                "pfxBlob": null,
+                "password": null
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Web/serverfarms/LtmVivoPrd'.",
+            "type": "Microsoft.Web/serverfarms",
+            "sku": {
+                "name": "P1",
+                "tier": "Premium",
+                "size": "P1",
+                "family": "P",
+                "capacity": 2
+            },
+            "kind": "app",
+            "name": "[parameters('serverfarms_LtmVivoPrd_name')]",
+            "apiVersion": "2015-08-01",
+            "location": "East US 2",
+            "properties": {
+                "name": "[parameters('serverfarms_LtmVivoPrd_name')]",
+                "numberOfWorkers": 2
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Web/sites/LtmVivoPrdExtratoResgate01'.",
+            "type": "Microsoft.Web/sites",
+            "kind": "app",
+            "name": "[parameters('sites_LtmVivoPrdExtratoResgate01_name')]",
+            "apiVersion": "2015-08-01",
+            "location": "East US 2",
+            "tags": {
+                "hidden-related:/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourcegroups/VivoPrd/providers/Microsoft.Web/serverfarms/LtmVivoPrd": "empty"
+            },
+            "properties": {
+                "name": "[parameters('sites_LtmVivoPrdExtratoResgate01_name')]",
+                "hostNames": [
+                    "extrato.programadepontosvivo.com.br",
+                    "ltmvivoprdextratoresgate01.ltmvivoprdase01.p.azurewebsites.net"
+                ],
+                "enabledHostNames": [
+                    "extrato.programadepontosvivo.com.br",
+                    "ltmvivoprdextratoresgate01.ltmvivoprdase01.p.azurewebsites.net",
+                    "ltmvivoprdextratoresgate01.scm.LtmVivoPrdAse01.p.azurewebsites.net"
+                ],
+                "hostNameSslStates": [
+                    {
+                        "name": "extrato.programadepontosvivo.com.br",
+                        "sslState": 1,
+                        "thumbprint": "6904F471D50CC0B9C0B1E777DF5F67F74A269A93",
+                        "ipBasedSslState": 0
+                    },
+                    {
+                        "name": "[concat(parameters('sites_LtmVivoPrdExtratoResgate01_name'),'ltmvivoprdextratoresgate01.ltmvivoprdase01.p.azurewebsites.net')]",
+                        "sslState": 0,
+                        "thumbprint": null,
+                        "ipBasedSslState": 0
+                    },
+                    {
+                        "name": "[concat(parameters('sites_LtmVivoPrdExtratoResgate01_name'),'ltmvivoprdextratoresgate01.scm.LtmVivoPrdAse01.p.azurewebsites.net')]",
+                        "sslState": 0,
+                        "thumbprint": null,
+                        "ipBasedSslState": 0
+                    }
+                ],
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_LtmVivoPrd_name'))]"
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_LtmVivoPrd_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Web/sites/LtmVivoPrdAdmin01-TS'.",
+            "type": "Microsoft.Web/sites",
+            "kind": "app",
+            "name": "[parameters('sites_LtmVivoPrdAdmin01_TS_name')]",
+            "apiVersion": "2015-08-01",
+            "location": "East US 2",
+            "tags": {
+                "hidden-related:/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourcegroups/VivoPrd/providers/Microsoft.Web/serverfarms/LtmVivoPrd": "empty"
+            },
+            "properties": {
+                "name": "[parameters('sites_LtmVivoPrdAdmin01_TS_name')]",
+                "hostNames": [
+                    "admin-ts.programadepontosvivo.com.br",
+                    "ltmvivoprdadmin01-ts.ltmvivoprdase01.p.azurewebsites.net"
+                ],
+                "enabledHostNames": [
+                    "admin-ts.programadepontosvivo.com.br",
+                    "ltmvivoprdadmin01-ts.ltmvivoprdase01.p.azurewebsites.net",
+                    "ltmvivoprdadmin01-ts.scm.LtmVivoPrdAse01.p.azurewebsites.net"
+                ],
+                "hostNameSslStates": [
+                    {
+                        "name": "admin-ts.programadepontosvivo.com.br",
+                        "sslState": 1,
+                        "thumbprint": "6904F471D50CC0B9C0B1E777DF5F67F74A269A93",
+                        "ipBasedSslState": 0
+                    },
+                    {
+                        "name": "[concat(parameters('sites_LtmVivoPrdAdmin01_TS_name'),'ltmvivoprdadmin01-ts.ltmvivoprdase01.p.azurewebsites.net')]",
+                        "sslState": 0,
+                        "thumbprint": null,
+                        "ipBasedSslState": 0
+                    },
+                    {
+                        "name": "[concat(parameters('sites_LtmVivoPrdAdmin01_TS_name'),'ltmvivoprdadmin01-ts.scm.LtmVivoPrdAse01.p.azurewebsites.net')]",
+                        "sslState": 0,
+                        "thumbprint": null,
+                        "ipBasedSslState": 0
+                    }
+                ],
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_LtmVivoPrd_name'))]"
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_LtmVivoPrd_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Web/sites/LtmVivoPrdApiGateway01-TS'.",
+            "type": "Microsoft.Web/sites",
+            "kind": "api",
+            "name": "[parameters('sites_LtmVivoPrdApiGateway01_TS_name')]",
+            "apiVersion": "2015-08-01",
+            "location": "East US 2",
+            "tags": {
+                "hidden-related:/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourcegroups/VivoPrd/providers/Microsoft.Web/serverfarms/LtmVivoPrd": "empty"
+            },
+            "properties": {
+                "name": "[parameters('sites_LtmVivoPrdApiGateway01_TS_name')]",
+                "hostNames": [
+                    "gatewayapi-ts.programadepontosvivo.com.br",
+                    "ltmvivoprdapigateway01-ts.ltmvivoprdase01.p.azurewebsites.net"
+                ],
+                "enabledHostNames": [
+                    "gatewayapi-ts.programadepontosvivo.com.br",
+                    "ltmvivoprdapigateway01-ts.ltmvivoprdase01.p.azurewebsites.net",
+                    "ltmvivoprdapigateway01-ts.scm.LtmVivoPrdAse01.p.azurewebsites.net"
+                ],
+                "hostNameSslStates": [
+                    {
+                        "name": "gatewayapi-ts.programadepontosvivo.com.br",
+                        "sslState": 1,
+                        "thumbprint": "6904F471D50CC0B9C0B1E777DF5F67F74A269A93",
+                        "ipBasedSslState": 0
+                    },
+                    {
+                        "name": "[concat(parameters('sites_LtmVivoPrdApiGateway01_TS_name'),'ltmvivoprdapigateway01-ts.ltmvivoprdase01.p.azurewebsites.net')]",
+                        "sslState": 0,
+                        "thumbprint": null,
+                        "ipBasedSslState": 0
+                    },
+                    {
+                        "name": "[concat(parameters('sites_LtmVivoPrdApiGateway01_TS_name'),'ltmvivoprdapigateway01-ts.scm.LtmVivoPrdAse01.p.azurewebsites.net')]",
+                        "sslState": 0,
+                        "thumbprint": null,
+                        "ipBasedSslState": 0
+                    }
+                ],
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_LtmVivoPrd_name'))]"
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_LtmVivoPrd_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Web/sites/LtmVivoPrdAdmin01'.",
+            "type": "Microsoft.Web/sites",
+            "kind": "app",
+            "name": "[parameters('sites_LtmVivoPrdAdmin01_name')]",
+            "apiVersion": "2015-08-01",
+            "location": "East US 2",
+            "tags": {
+                "hidden-related:/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourcegroups/VivoPrd/providers/Microsoft.Web/serverfarms/LtmVivoPrd": "empty"
+            },
+            "properties": {
+                "name": "[parameters('sites_LtmVivoPrdAdmin01_name')]",
+                "hostNames": [
+                    "admin.programadepontosvivo.com.br",
+                    "ltmvivoprdadmin01.ltmvivoprdase01.p.azurewebsites.net"
+                ],
+                "enabledHostNames": [
+                    "admin.programadepontosvivo.com.br",
+                    "ltmvivoprdadmin01.ltmvivoprdase01.p.azurewebsites.net",
+                    "ltmvivoprdadmin01.scm.LtmVivoPrdAse01.p.azurewebsites.net"
+                ],
+                "hostNameSslStates": [
+                    {
+                        "name": "admin.programadepontosvivo.com.br",
+                        "sslState": 1,
+                        "thumbprint": "6904F471D50CC0B9C0B1E777DF5F67F74A269A93",
+                        "ipBasedSslState": 0
+                    },
+                    {
+                        "name": "[concat(parameters('sites_LtmVivoPrdAdmin01_name'),'ltmvivoprdadmin01.ltmvivoprdase01.p.azurewebsites.net')]",
+                        "sslState": 0,
+                        "thumbprint": null,
+                        "ipBasedSslState": 0
+                    },
+                    {
+                        "name": "[concat(parameters('sites_LtmVivoPrdAdmin01_name'),'ltmvivoprdadmin01.scm.LtmVivoPrdAse01.p.azurewebsites.net')]",
+                        "sslState": 0,
+                        "thumbprint": null,
+                        "ipBasedSslState": 0
+                    }
+                ],
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_LtmVivoPrd_name'))]"
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_LtmVivoPrd_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Web/sites/LtmVivoPrdApiAdmin01-TS'.",
+            "type": "Microsoft.Web/sites",
+            "kind": "api",
+            "name": "[parameters('sites_LtmVivoPrdApiAdmin01_TS_name')]",
+            "apiVersion": "2015-08-01",
+            "location": "East US 2",
+            "tags": {
+                "hidden-related:/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourcegroups/VivoPrd/providers/Microsoft.Web/serverfarms/LtmVivoPrd": "empty"
+            },
+            "properties": {
+                "name": "[parameters('sites_LtmVivoPrdApiAdmin01_TS_name')]",
+                "hostNames": [
+                    "adminapi-ts.programadepontosvivo.com.br",
+                    "ltmvivoprdapiadmin01-ts.ltmvivoprdase01.p.azurewebsites.net"
+                ],
+                "enabledHostNames": [
+                    "adminapi-ts.programadepontosvivo.com.br",
+                    "ltmvivoprdapiadmin01-ts.ltmvivoprdase01.p.azurewebsites.net",
+                    "ltmvivoprdapiadmin01-ts.scm.LtmVivoPrdAse01.p.azurewebsites.net"
+                ],
+                "hostNameSslStates": [
+                    {
+                        "name": "adminapi-ts.programadepontosvivo.com.br",
+                        "sslState": 1,
+                        "thumbprint": "6904F471D50CC0B9C0B1E777DF5F67F74A269A93",
+                        "ipBasedSslState": 0
+                    },
+                    {
+                        "name": "[concat(parameters('sites_LtmVivoPrdApiAdmin01_TS_name'),'ltmvivoprdapiadmin01-ts.ltmvivoprdase01.p.azurewebsites.net')]",
+                        "sslState": 0,
+                        "thumbprint": null,
+                        "ipBasedSslState": 0
+                    },
+                    {
+                        "name": "[concat(parameters('sites_LtmVivoPrdApiAdmin01_TS_name'),'ltmvivoprdapiadmin01-ts.scm.LtmVivoPrdAse01.p.azurewebsites.net')]",
+                        "sslState": 0,
+                        "thumbprint": null,
+                        "ipBasedSslState": 0
+                    }
+                ],
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_LtmVivoPrd_name'))]"
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_LtmVivoPrd_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Web/sites/LtmVivoPrdApiAdmin01'.",
+            "type": "Microsoft.Web/sites",
+            "kind": "api",
+            "name": "[parameters('sites_LtmVivoPrdApiAdmin01_name')]",
+            "apiVersion": "2015-08-01",
+            "location": "East US 2",
+            "tags": {
+                "hidden-related:/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourcegroups/VivoPrd/providers/Microsoft.Web/serverfarms/LtmVivoPrd": "empty"
+            },
+            "properties": {
+                "name": "[parameters('sites_LtmVivoPrdApiAdmin01_name')]",
+                "hostNames": [
+                    "adminapi.programadepontosvivo.com.br",
+                    "ltmvivoprdapiadmin01.ltmvivoprdase01.p.azurewebsites.net"
+                ],
+                "enabledHostNames": [
+                    "adminapi.programadepontosvivo.com.br",
+                    "ltmvivoprdapiadmin01.ltmvivoprdase01.p.azurewebsites.net",
+                    "ltmvivoprdapiadmin01.scm.LtmVivoPrdAse01.p.azurewebsites.net"
+                ],
+                "hostNameSslStates": [
+                    {
+                        "name": "adminapi.programadepontosvivo.com.br",
+                        "sslState": 1,
+                        "thumbprint": "6904F471D50CC0B9C0B1E777DF5F67F74A269A93",
+                        "ipBasedSslState": 0
+                    },
+                    {
+                        "name": "[concat(parameters('sites_LtmVivoPrdApiAdmin01_name'),'ltmvivoprdapiadmin01.ltmvivoprdase01.p.azurewebsites.net')]",
+                        "sslState": 0,
+                        "thumbprint": null,
+                        "ipBasedSslState": 0
+                    },
+                    {
+                        "name": "[concat(parameters('sites_LtmVivoPrdApiAdmin01_name'),'ltmvivoprdapiadmin01.scm.LtmVivoPrdAse01.p.azurewebsites.net')]",
+                        "sslState": 0,
+                        "thumbprint": null,
+                        "ipBasedSslState": 0
+                    }
+                ],
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_LtmVivoPrd_name'))]"
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_LtmVivoPrd_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Web/sites/LtmVivoPrdApiGateway01'.",
+            "type": "Microsoft.Web/sites",
+            "kind": "api",
+            "name": "[parameters('sites_LtmVivoPrdApiGateway01_name')]",
+            "apiVersion": "2015-08-01",
+            "location": "East US 2",
+            "tags": {
+                "hidden-related:/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourcegroups/VivoPrd/providers/Microsoft.Web/serverfarms/LtmVivoPrd": "empty"
+            },
+            "properties": {
+                "name": "[parameters('sites_LtmVivoPrdApiGateway01_name')]",
+                "hostNames": [
+                    "gatewayapi.programadepontosvivo.com.br",
+                    "ltmvivoprdapigateway01.ltmvivoprdase01.p.azurewebsites.net"
+                ],
+                "enabledHostNames": [
+                    "gatewayapi.programadepontosvivo.com.br",
+                    "ltmvivoprdapigateway01.ltmvivoprdase01.p.azurewebsites.net",
+                    "ltmvivoprdapigateway01.scm.LtmVivoPrdAse01.p.azurewebsites.net"
+                ],
+                "hostNameSslStates": [
+                    {
+                        "name": "gatewayapi.programadepontosvivo.com.br",
+                        "sslState": 1,
+                        "thumbprint": "6904F471D50CC0B9C0B1E777DF5F67F74A269A93",
+                        "ipBasedSslState": 0
+                    },
+                    {
+                        "name": "[concat(parameters('sites_LtmVivoPrdApiGateway01_name'),'ltmvivoprdapigateway01.ltmvivoprdase01.p.azurewebsites.net')]",
+                        "sslState": 0,
+                        "thumbprint": null,
+                        "ipBasedSslState": 0
+                    },
+                    {
+                        "name": "[concat(parameters('sites_LtmVivoPrdApiGateway01_name'),'ltmvivoprdapigateway01.scm.LtmVivoPrdAse01.p.azurewebsites.net')]",
+                        "sslState": 0,
+                        "thumbprint": null,
+                        "ipBasedSslState": 0
+                    }
+                ],
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_LtmVivoPrd_name'))]"
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_LtmVivoPrd_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Web/sites/LtmVivoPrdWebJobs01'.",
+            "type": "Microsoft.Web/sites",
+            "kind": "app",
+            "name": "[parameters('sites_LtmVivoPrdWebJobs01_name')]",
+            "apiVersion": "2015-08-01",
+            "location": "East US 2",
+            "tags": {
+                "hidden-related:/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourcegroups/VivoPrd/providers/Microsoft.Web/serverfarms/LtmVivoPrd": "empty"
+            },
+            "properties": {
+                "name": "[parameters('sites_LtmVivoPrdWebJobs01_name')]",
+                "hostNames": [
+                    "ltmvivoprdwebjobs01.ltmvivoprdase01.p.azurewebsites.net"
+                ],
+                "enabledHostNames": [
+                    "ltmvivoprdwebjobs01.ltmvivoprdase01.p.azurewebsites.net",
+                    "ltmvivoprdwebjobs01.scm.LtmVivoPrdAse01.p.azurewebsites.net"
+                ],
+                "hostNameSslStates": [
+                    {
+                        "name": "[concat(parameters('sites_LtmVivoPrdWebJobs01_name'),'ltmvivoprdwebjobs01.ltmvivoprdase01.p.azurewebsites.net')]",
+                        "sslState": 0,
+                        "thumbprint": null,
+                        "ipBasedSslState": 0
+                    },
+                    {
+                        "name": "[concat(parameters('sites_LtmVivoPrdWebJobs01_name'),'ltmvivoprdwebjobs01.scm.LtmVivoPrdAse01.p.azurewebsites.net')]",
+                        "sslState": 0,
+                        "thumbprint": null,
+                        "ipBasedSslState": 0
+                    }
+                ],
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_LtmVivoPrd_name'))]"
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_LtmVivoPrd_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Web/sites/LtmVivoPrdExtratoResgate01-TS'.",
+            "type": "Microsoft.Web/sites",
+            "kind": "app",
+            "name": "[parameters('sites_LtmVivoPrdExtratoResgate01_TS_name')]",
+            "apiVersion": "2015-08-01",
+            "location": "East US 2",
+            "tags": {
+                "hidden-related:/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourcegroups/VivoPrd/providers/Microsoft.Web/serverfarms/LtmVivoPrd": "empty"
+            },
+            "properties": {
+                "name": "[parameters('sites_LtmVivoPrdExtratoResgate01_TS_name')]",
+                "hostNames": [
+                    "extrato-ts.programadepontosvivo.com.br",
+                    "ltmvivoprdextratoresgate01-ts.ltmvivoprdase01.p.azurewebsites.net"
+                ],
+                "enabledHostNames": [
+                    "extrato-ts.programadepontosvivo.com.br",
+                    "ltmvivoprdextratoresgate01-ts.ltmvivoprdase01.p.azurewebsites.net",
+                    "ltmvivoprdextratoresgate01-ts.scm.LtmVivoPrdAse01.p.azurewebsites.net"
+                ],
+                "hostNameSslStates": [
+                    {
+                        "name": "extrato-ts.programadepontosvivo.com.br",
+                        "sslState": 1,
+                        "thumbprint": "6904F471D50CC0B9C0B1E777DF5F67F74A269A93",
+                        "ipBasedSslState": 0
+                    },
+                    {
+                        "name": "[concat(parameters('sites_LtmVivoPrdExtratoResgate01_TS_name'),'ltmvivoprdextratoresgate01-ts.ltmvivoprdase01.p.azurewebsites.net')]",
+                        "sslState": 0,
+                        "thumbprint": null,
+                        "ipBasedSslState": 0
+                    },
+                    {
+                        "name": "[concat(parameters('sites_LtmVivoPrdExtratoResgate01_TS_name'),'ltmvivoprdextratoresgate01-ts.scm.LtmVivoPrdAse01.p.azurewebsites.net')]",
+                        "sslState": 0,
+                        "thumbprint": null,
+                        "ipBasedSslState": 0
+                    }
+                ],
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_LtmVivoPrd_name'))]"
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_LtmVivoPrd_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Web/sites/LtmVivoPrdBeneficios01'.",
+            "type": "Microsoft.Web/sites",
+            "kind": "app",
+            "name": "[parameters('sites_LtmVivoPrdBeneficios01_name')]",
+            "apiVersion": "2015-08-01",
+            "location": "East US 2",
+            "tags": {
+                "hidden-related:/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourcegroups/VivoPrd/providers/Microsoft.Web/serverfarms/LtmVivoPrd": "empty"
+            },
+            "properties": {
+                "name": "[parameters('sites_LtmVivoPrdBeneficios01_name')]",
+                "hostNames": [
+                    "beneficios.programadepontosvivo.com.br",
+                    "ltmvivoprdbeneficios01.ltmvivoprdase01.p.azurewebsites.net"
+                ],
+                "enabledHostNames": [
+                    "beneficios.programadepontosvivo.com.br",
+                    "ltmvivoprdbeneficios01.ltmvivoprdase01.p.azurewebsites.net",
+                    "ltmvivoprdbeneficios01.scm.LtmVivoPrdAse01.p.azurewebsites.net"
+                ],
+                "hostNameSslStates": [
+                    {
+                        "name": "beneficios.programadepontosvivo.com.br",
+                        "sslState": 1,
+                        "thumbprint": "6904F471D50CC0B9C0B1E777DF5F67F74A269A93",
+                        "ipBasedSslState": 0
+                    },
+                    {
+                        "name": "[concat(parameters('sites_LtmVivoPrdBeneficios01_name'),'ltmvivoprdbeneficios01.ltmvivoprdase01.p.azurewebsites.net')]",
+                        "sslState": 0,
+                        "thumbprint": null,
+                        "ipBasedSslState": 0
+                    },
+                    {
+                        "name": "[concat(parameters('sites_LtmVivoPrdBeneficios01_name'),'ltmvivoprdbeneficios01.scm.LtmVivoPrdAse01.p.azurewebsites.net')]",
+                        "sslState": 0,
+                        "thumbprint": null,
+                        "ipBasedSslState": 0
+                    }
+                ],
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_LtmVivoPrd_name'))]"
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_LtmVivoPrd_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Web/sites/LtmVivoPrdBeneficios01-TS'.",
+            "type": "Microsoft.Web/sites",
+            "kind": "app",
+            "name": "[parameters('sites_LtmVivoPrdBeneficios01_TS_name')]",
+            "apiVersion": "2015-08-01",
+            "location": "East US 2",
+            "tags": {
+                "hidden-related:/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourcegroups/VivoPrd/providers/Microsoft.Web/serverfarms/LtmVivoPrd": "empty"
+            },
+            "properties": {
+                "name": "[parameters('sites_LtmVivoPrdBeneficios01_TS_name')]",
+                "hostNames": [
+                    "beneficios-ts.programadepontosvivo.com.br",
+                    "ltmvivoprdbeneficios01-ts.ltmvivoprdase01.p.azurewebsites.net"
+                ],
+                "enabledHostNames": [
+                    "beneficios-ts.programadepontosvivo.com.br",
+                    "ltmvivoprdbeneficios01-ts.ltmvivoprdase01.p.azurewebsites.net",
+                    "ltmvivoprdbeneficios01-ts.scm.LtmVivoPrdAse01.p.azurewebsites.net"
+                ],
+                "hostNameSslStates": [
+                    {
+                        "name": "beneficios-ts.programadepontosvivo.com.br",
+                        "sslState": 1,
+                        "thumbprint": "6904F471D50CC0B9C0B1E777DF5F67F74A269A93",
+                        "ipBasedSslState": 0
+                    },
+                    {
+                        "name": "[concat(parameters('sites_LtmVivoPrdBeneficios01_TS_name'),'ltmvivoprdbeneficios01-ts.ltmvivoprdase01.p.azurewebsites.net')]",
+                        "sslState": 0,
+                        "thumbprint": null,
+                        "ipBasedSslState": 0
+                    },
+                    {
+                        "name": "[concat(parameters('sites_LtmVivoPrdBeneficios01_TS_name'),'ltmvivoprdbeneficios01-ts.scm.LtmVivoPrdAse01.p.azurewebsites.net')]",
+                        "sslState": 0,
+                        "thumbprint": null,
+                        "ipBasedSslState": 0
+                    }
+                ],
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_LtmVivoPrd_name'))]"
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_LtmVivoPrd_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourcegroups/VivoPrd/providers/Microsoft.ServiceBus/namespaces/LtmVivoPrd01/AuthorizationRules/RootManageSharedAccessKey'.",
+            "type": "Microsoft.ServiceBus/namespaces/AuthorizationRules",
+            "name": "[parameters('AuthorizationRules_RootManageSharedAccessKey_name')]",
+            "apiVersion": "2015-08-01",
+            "properties": {
+                "rights": [
+                    "Listen",
+                    "Manage",
+                    "Send"
+                ]
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_LtmVivoPrd01_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourcegroups/VivoPrd/providers/Microsoft.ServiceBus/namespaces/LtmVivoPrd01/queues/email'.",
+            "type": "Microsoft.ServiceBus/namespaces/queues",
+            "name": "[parameters('queues_email_name')]",
+            "apiVersion": "2015-08-01",
+            "location": "East US 2",
+            "properties": {
+                "maxSizeInMegabytes": 16384,
+                "requiresDuplicateDetection": false,
+                "requiresSession": false,
+                "defaultMessageTimeToLive": "14.00:00:00",
+                "deadLetteringOnMessageExpiration": false,
+                "enableBatchedOperations": true,
+                "isAnonymousAccessible": false,
+                "status": "Active",
+                "createdAt": "2016-06-10T18:30:04.45Z",
+                "updatedAt": "2017-01-06T18:33:19.0858245Z",
+                "accessedAt": "2017-01-20T12:38:41.4578051Z",
+                "supportOrdering": false,
+                "countDetails": {
+                    "activeMessageCount": 0,
+                    "deadLetterMessageCount": 37,
+                    "scheduledMessageCount": 0,
+                    "transferMessageCount": 0,
+                    "transferDeadLetterMessageCount": 0
+                },
+                "autoDeleteOnIdle": "10675199.02:48:05.4775807",
+                "enablePartitioning": true,
+                "enableExpress": false
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_LtmVivoPrd01_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourcegroups/VivoPrd/providers/Microsoft.ServiceBus/namespaces/LtmVivoPrd01/queues/sms'.",
+            "type": "Microsoft.ServiceBus/namespaces/queues",
+            "name": "[parameters('queues_sms_name')]",
+            "apiVersion": "2015-08-01",
+            "location": "East US 2",
+            "properties": {
+                "maxSizeInMegabytes": 16384,
+                "requiresDuplicateDetection": false,
+                "requiresSession": false,
+                "defaultMessageTimeToLive": "14.00:00:00",
+                "deadLetteringOnMessageExpiration": false,
+                "enableBatchedOperations": true,
+                "isAnonymousAccessible": false,
+                "status": "Active",
+                "createdAt": "2016-06-10T18:49:57.54Z",
+                "updatedAt": "2017-01-06T14:06:09.603Z",
+                "accessedAt": "2017-01-20T12:38:41.5074431Z",
+                "supportOrdering": false,
+                "countDetails": {
+                    "activeMessageCount": 0,
+                    "deadLetterMessageCount": 87,
+                    "scheduledMessageCount": 0,
+                    "transferMessageCount": 0,
+                    "transferDeadLetterMessageCount": 0
+                },
+                "autoDeleteOnIdle": "10675199.02:48:05.4775807",
+                "enablePartitioning": true,
+                "enableExpress": false
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_LtmVivoPrd01_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourcegroups/VivoPrd/providers/Microsoft.ServiceBus/namespaces/LtmVivoPrd01/queues/vivo-notifications'.",
+            "type": "Microsoft.ServiceBus/namespaces/queues",
+            "name": "[parameters('queues_vivo_notifications_name')]",
+            "apiVersion": "2015-08-01",
+            "location": "East US 2",
+            "properties": {
+                "maxSizeInMegabytes": 16384,
+                "requiresDuplicateDetection": false,
+                "requiresSession": false,
+                "defaultMessageTimeToLive": "14.00:00:00",
+                "deadLetteringOnMessageExpiration": false,
+                "enableBatchedOperations": true,
+                "isAnonymousAccessible": false,
+                "status": "Active",
+                "createdAt": "2016-07-06T13:30:28.5722846Z",
+                "updatedAt": "2016-07-06T13:38:32.237Z",
+                "accessedAt": "2017-01-20T12:38:41.5074431Z",
+                "supportOrdering": false,
+                "countDetails": {
+                    "activeMessageCount": 0,
+                    "deadLetterMessageCount": 0,
+                    "scheduledMessageCount": 0,
+                    "transferMessageCount": 0,
+                    "transferDeadLetterMessageCount": 0
+                },
+                "autoDeleteOnIdle": "10675199.02:48:05.4775807",
+                "enablePartitioning": true,
+                "enableExpress": false
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_LtmVivoPrd01_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourcegroups/VivoPrd/providers/Microsoft.ServiceBus/namespaces/LtmVivoPrd01/queues/email/authorizationRules/EscutarEnviar'.",
+            "type": "Microsoft.ServiceBus/namespaces/queues/authorizationRules",
+            "name": "[parameters('authorizationRules_EscutarEnviar_name')]",
+            "apiVersion": "2015-08-01",
+            "location": "East US 2",
+            "properties": {
+                "rights": [
+                    "Send",
+                    "Listen"
+                ]
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_LtmVivoPrd01_name'))]",
+                "[resourceId('Microsoft.ServiceBus/namespaces/queues', parameters('queues_email_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourcegroups/VivoPrd/providers/Microsoft.ServiceBus/namespaces/LtmVivoPrd01/queues/email/authorizationRules/Gerenciar'.",
+            "type": "Microsoft.ServiceBus/namespaces/queues/authorizationRules",
+            "name": "[parameters('authorizationRules_Gerenciar_name')]",
+            "apiVersion": "2015-08-01",
+            "location": "East US 2",
+            "properties": {
+                "rights": [
+                    "Manage",
+                    "Send",
+                    "Listen"
+                ]
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_LtmVivoPrd01_name'))]",
+                "[resourceId('Microsoft.ServiceBus/namespaces/queues', parameters('queues_email_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourcegroups/VivoPrd/providers/Microsoft.ServiceBus/namespaces/LtmVivoPrd01/queues/email/authorizationRules/Enviar'.",
+            "type": "Microsoft.ServiceBus/namespaces/queues/authorizationRules",
+            "name": "[parameters('authorizationRules_Enviar_name')]",
+            "apiVersion": "2015-08-01",
+            "location": "East US 2",
+            "properties": {
+                "rights": [
+                    "Send"
+                ]
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_LtmVivoPrd01_name'))]",
+                "[resourceId('Microsoft.ServiceBus/namespaces/queues', parameters('queues_email_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourcegroups/VivoPrd/providers/Microsoft.ServiceBus/namespaces/LtmVivoPrd01/queues/sms/authorizationRules/EscutarEnviar'.",
+            "type": "Microsoft.ServiceBus/namespaces/queues/authorizationRules",
+            "name": "[parameters('authorizationRules_EscutarEnviar_name_1')]",
+            "apiVersion": "2015-08-01",
+            "location": "East US 2",
+            "properties": {
+                "rights": [
+                    "Send",
+                    "Listen"
+                ]
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_LtmVivoPrd01_name'))]",
+                "[resourceId('Microsoft.ServiceBus/namespaces/queues', parameters('queues_sms_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourcegroups/VivoPrd/providers/Microsoft.ServiceBus/namespaces/LtmVivoPrd01/queues/sms/authorizationRules/Gerenciar'.",
+            "type": "Microsoft.ServiceBus/namespaces/queues/authorizationRules",
+            "name": "[parameters('authorizationRules_Gerenciar_name_1')]",
+            "apiVersion": "2015-08-01",
+            "location": "East US 2",
+            "properties": {
+                "rights": [
+                    "Manage",
+                    "Send",
+                    "Listen"
+                ]
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_LtmVivoPrd01_name'))]",
+                "[resourceId('Microsoft.ServiceBus/namespaces/queues', parameters('queues_sms_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourcegroups/VivoPrd/providers/Microsoft.ServiceBus/namespaces/LtmVivoPrd01/queues/sms/authorizationRules/Enviar'.",
+            "type": "Microsoft.ServiceBus/namespaces/queues/authorizationRules",
+            "name": "[parameters('authorizationRules_Enviar_name_1')]",
+            "apiVersion": "2015-08-01",
+            "location": "East US 2",
+            "properties": {
+                "rights": [
+                    "Send"
+                ]
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_LtmVivoPrd01_name'))]",
+                "[resourceId('Microsoft.ServiceBus/namespaces/queues', parameters('queues_sms_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourcegroups/VivoPrd/providers/Microsoft.ServiceBus/namespaces/LtmVivoPrd01/queues/vivo-notifications/authorizationRules/EscutarEnviar'.",
+            "type": "Microsoft.ServiceBus/namespaces/queues/authorizationRules",
+            "name": "[parameters('authorizationRules_EscutarEnviar_name_2')]",
+            "apiVersion": "2015-08-01",
+            "location": "East US 2",
+            "properties": {
+                "rights": [
+                    "Send",
+                    "Listen"
+                ]
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_LtmVivoPrd01_name'))]",
+                "[resourceId('Microsoft.ServiceBus/namespaces/queues', parameters('queues_vivo_notifications_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourcegroups/VivoPrd/providers/Microsoft.ServiceBus/namespaces/LtmVivoPrd01/queues/vivo-notifications/authorizationRules/Gerenciar'.",
+            "type": "Microsoft.ServiceBus/namespaces/queues/authorizationRules",
+            "name": "[parameters('authorizationRules_Gerenciar_name_2')]",
+            "apiVersion": "2015-08-01",
+            "location": "East US 2",
+            "properties": {
+                "rights": [
+                    "Manage",
+                    "Send",
+                    "Listen"
+                ]
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_LtmVivoPrd01_name'))]",
+                "[resourceId('Microsoft.ServiceBus/namespaces/queues', parameters('queues_vivo_notifications_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourcegroups/VivoPrd/providers/Microsoft.ServiceBus/namespaces/ltmvivoprd01-ts/AuthorizationRules/RootManageSharedAccessKey'.",
+            "type": "Microsoft.ServiceBus/namespaces/AuthorizationRules",
+            "name": "[parameters('AuthorizationRules_RootManageSharedAccessKey_name_1')]",
+            "apiVersion": "2015-08-01",
+            "properties": {
+                "rights": [
+                    "Listen",
+                    "Manage",
+                    "Send"
+                ]
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_ltmvivoprd01_ts_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourcegroups/VivoPrd/providers/Microsoft.ServiceBus/namespaces/ltmvivoprd01-ts/queues/email'.",
+            "type": "Microsoft.ServiceBus/namespaces/queues",
+            "name": "[parameters('queues_email_name_1')]",
+            "apiVersion": "2015-08-01",
+            "location": "East US",
+            "properties": {
+                "maxSizeInMegabytes": 16384,
+                "requiresDuplicateDetection": false,
+                "requiresSession": false,
+                "defaultMessageTimeToLive": "14.00:00:00",
+                "deadLetteringOnMessageExpiration": false,
+                "enableBatchedOperations": true,
+                "isAnonymousAccessible": false,
+                "status": "Active",
+                "createdAt": "2017-01-03T21:20:12.387Z",
+                "updatedAt": "2017-01-04T16:41:58.097Z",
+                "accessedAt": "0001-01-01T00:00:00Z",
+                "supportOrdering": false,
+                "countDetails": {
+                    "activeMessageCount": 0,
+                    "deadLetterMessageCount": 0,
+                    "scheduledMessageCount": 0,
+                    "transferMessageCount": 0,
+                    "transferDeadLetterMessageCount": 0
+                },
+                "autoDeleteOnIdle": "10675199.02:48:05.4775807",
+                "enablePartitioning": true,
+                "enableExpress": false
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_ltmvivoprd01_ts_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourcegroups/VivoPrd/providers/Microsoft.ServiceBus/namespaces/ltmvivoprd01-ts/queues/sms'.",
+            "type": "Microsoft.ServiceBus/namespaces/queues",
+            "name": "[parameters('queues_sms_name_1')]",
+            "apiVersion": "2015-08-01",
+            "location": "East US",
+            "properties": {
+                "maxSizeInMegabytes": 16384,
+                "requiresDuplicateDetection": false,
+                "requiresSession": false,
+                "defaultMessageTimeToLive": "14.00:00:00",
+                "deadLetteringOnMessageExpiration": false,
+                "enableBatchedOperations": true,
+                "isAnonymousAccessible": false,
+                "status": "Active",
+                "createdAt": "2017-01-03T21:20:17.917Z",
+                "updatedAt": "2017-01-04T16:43:04.143Z",
+                "accessedAt": "0001-01-01T00:00:00Z",
+                "supportOrdering": false,
+                "countDetails": {
+                    "activeMessageCount": 0,
+                    "deadLetterMessageCount": 0,
+                    "scheduledMessageCount": 0,
+                    "transferMessageCount": 0,
+                    "transferDeadLetterMessageCount": 0
+                },
+                "autoDeleteOnIdle": "10675199.02:48:05.4775807",
+                "enablePartitioning": true,
+                "enableExpress": false
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_ltmvivoprd01_ts_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourcegroups/VivoPrd/providers/Microsoft.ServiceBus/namespaces/ltmvivoprd01-ts/queues/email/authorizationRules/Manage'.",
+            "type": "Microsoft.ServiceBus/namespaces/queues/authorizationRules",
+            "name": "[parameters('authorizationRules_Manage_name')]",
+            "apiVersion": "2015-08-01",
+            "location": "East US",
+            "properties": {
+                "rights": [
+                    "Manage",
+                    "Send",
+                    "Listen"
+                ]
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_ltmvivoprd01_ts_name'))]",
+                "[resourceId('Microsoft.ServiceBus/namespaces/queues', parameters('queues_email_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourcegroups/VivoPrd/providers/Microsoft.ServiceBus/namespaces/ltmvivoprd01-ts/queues/email/authorizationRules/Send'.",
+            "type": "Microsoft.ServiceBus/namespaces/queues/authorizationRules",
+            "name": "[parameters('authorizationRules_Send_name')]",
+            "apiVersion": "2015-08-01",
+            "location": "East US",
+            "properties": {
+                "rights": [
+                    "Send"
+                ]
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_ltmvivoprd01_ts_name'))]",
+                "[resourceId('Microsoft.ServiceBus/namespaces/queues', parameters('queues_email_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourcegroups/VivoPrd/providers/Microsoft.ServiceBus/namespaces/ltmvivoprd01-ts/queues/sms/authorizationRules/Manage'.",
+            "type": "Microsoft.ServiceBus/namespaces/queues/authorizationRules",
+            "name": "[parameters('authorizationRules_Manage_name_1')]",
+            "apiVersion": "2015-08-01",
+            "location": "East US",
+            "properties": {
+                "rights": [
+                    "Manage",
+                    "Send",
+                    "Listen"
+                ]
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_ltmvivoprd01_ts_name'))]",
+                "[resourceId('Microsoft.ServiceBus/namespaces/queues', parameters('queues_sms_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourcegroups/VivoPrd/providers/Microsoft.ServiceBus/namespaces/ltmvivoprd01-ts/queues/sms/authorizationRules/Send'.",
+            "type": "Microsoft.ServiceBus/namespaces/queues/authorizationRules",
+            "name": "[parameters('authorizationRules_Send_name_1')]",
+            "apiVersion": "2015-08-01",
+            "location": "East US",
+            "properties": {
+                "rights": [
+                    "Send"
+                ]
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_ltmvivoprd01_ts_name'))]",
+                "[resourceId('Microsoft.ServiceBus/namespaces/queues', parameters('queues_sms_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Sql/servers/ltmvivoprd01/databases/DB_Vivo_NPP'.",
+            "type": "Microsoft.Sql/servers/databases",
+            "kind": "v12.0,user",
+            "name": "[parameters('databases_DB_Vivo_NPP_name')]",
+            "apiVersion": "2014-04-01-preview",
+            "location": "East US 2",
+            "properties": {
+                "databaseId": "a81eda2b-f8a9-4f18-a067-a57b335479c4",
+                "edition": "Premium",
+                "status": "Online",
+                "serviceLevelObjective": "P4",
+                "collation": "SQL_Latin1_General_CP1_CI_AS",
+                "maxSizeBytes": "536870912000",
+                "creationDate": "2017-01-04T13:32:40.603Z",
+                "currentServiceObjectiveId": "afe1eee1-1f12-4e5f-9ad6-2de9c12cb4dc",
+                "requestedServiceObjectiveId": "afe1eee1-1f12-4e5f-9ad6-2de9c12cb4dc",
+                "requestedServiceObjectiveName": "P4",
+                "sampleName": null,
+                "defaultSecondaryLocation": "Central US",
+                "earliestRestoreDate": "2017-01-04T13:43:36.28Z",
+                "elasticPoolName": null,
+                "containmentState": 2,
+                "readScale": "Disabled"
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_ltmvivoprd01_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Sql/servers/ltmvivoprd01/databases/DB_Vivo_NPP_TS'.",
+            "type": "Microsoft.Sql/servers/databases",
+            "kind": "v12.0,user",
+            "name": "[parameters('databases_DB_Vivo_NPP_TS_name')]",
+            "apiVersion": "2014-04-01-preview",
+            "location": "East US 2",
+            "properties": {
+                "databaseId": "03228139-886c-4f99-887c-8d84b617cb50",
+                "edition": "Premium",
+                "status": "Online",
+                "serviceLevelObjective": "P1",
+                "collation": "SQL_Latin1_General_CP1_CI_AS",
+                "maxSizeBytes": "536870912000",
+                "creationDate": "2017-01-04T12:59:39.467Z",
+                "currentServiceObjectiveId": "7203483a-c4fb-4304-9e9f-17c71c904f5d",
+                "requestedServiceObjectiveId": "7203483a-c4fb-4304-9e9f-17c71c904f5d",
+                "requestedServiceObjectiveName": "P1",
+                "sampleName": null,
+                "defaultSecondaryLocation": "Central US",
+                "earliestRestoreDate": "2017-01-04T13:11:07.707Z",
+                "elasticPoolName": null,
+                "containmentState": 2,
+                "readScale": "Disabled"
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_ltmvivoprd01_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Sql/servers/ltmvivoprd01/databases/master'.",
+            "type": "Microsoft.Sql/servers/databases",
+            "kind": "v12.0,system",
+            "name": "[parameters('databases_master_name')]",
+            "apiVersion": "2014-04-01-preview",
+            "location": "East US 2",
+            "properties": {
+                "databaseId": "cb027d7f-d068-42f0-a82c-fbe4b1e93d23",
+                "edition": "System",
+                "status": "Online",
+                "serviceLevelObjective": "System2",
+                "collation": "SQL_Latin1_General_CP1_CI_AS",
+                "maxSizeBytes": "5368709120",
+                "creationDate": "2016-06-09T14:51:00.22Z",
+                "currentServiceObjectiveId": "620323bf-2879-4807-b30d-c2e6d7b3b3aa",
+                "requestedServiceObjectiveId": "620323bf-2879-4807-b30d-c2e6d7b3b3aa",
+                "requestedServiceObjectiveName": "System2",
+                "sampleName": null,
+                "defaultSecondaryLocation": "Central US",
+                "earliestRestoreDate": null,
+                "elasticPoolName": null,
+                "containmentState": 2,
+                "readScale": "Disabled"
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_ltmvivoprd01_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Sql/servers/ltmvivoprd01/firewallRules/AllowAllWindowsAzureIps'.",
+            "type": "Microsoft.Sql/servers/firewallRules",
+            "kind": "v12.0",
+            "name": "[parameters('firewallRules_AllowAllWindowsAzureIps_name')]",
+            "apiVersion": "2014-04-01-preview",
+            "location": "East US 2",
+            "properties": {
+                "startIpAddress": "0.0.0.0",
+                "endIpAddress": "0.0.0.0"
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_ltmvivoprd01_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Sql/servers/ltmvivoprd01/firewallRules/API FORA'.",
+            "type": "Microsoft.Sql/servers/firewallRules",
+            "kind": "v12.0",
+            "name": "[parameters('firewallRules_API_FORA_name')]",
+            "apiVersion": "2014-04-01-preview",
+            "location": "East US 2",
+            "properties": {
+                "startIpAddress": "40.84.61.229",
+                "endIpAddress": "40.84.61.229"
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_ltmvivoprd01_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Sql/servers/ltmvivoprd01/firewallRules/API FORA 2'.",
+            "type": "Microsoft.Sql/servers/firewallRules",
+            "kind": "v12.0",
+            "name": "[parameters('firewallRules_API_FORA_2_name')]",
+            "apiVersion": "2014-04-01-preview",
+            "location": "East US 2",
+            "properties": {
+                "startIpAddress": "40.79.45.187",
+                "endIpAddress": "40.79.45.187"
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_ltmvivoprd01_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Sql/servers/ltmvivoprd01/firewallRules/API FORA 3'.",
+            "type": "Microsoft.Sql/servers/firewallRules",
+            "kind": "v12.0",
+            "name": "[parameters('firewallRules_API_FORA_3_name')]",
+            "apiVersion": "2014-04-01-preview",
+            "location": "East US 2",
+            "properties": {
+                "startIpAddress": "40.79.43.90",
+                "endIpAddress": "40.79.43.90"
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_ltmvivoprd01_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Sql/servers/ltmvivoprd01/firewallRules/API FORA 4'.",
+            "type": "Microsoft.Sql/servers/firewallRules",
+            "kind": "v12.0",
+            "name": "[parameters('firewallRules_API_FORA_4_name')]",
+            "apiVersion": "2014-04-01-preview",
+            "location": "East US 2",
+            "properties": {
+                "startIpAddress": "40.79.46.129",
+                "endIpAddress": "40.79.46.129"
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_ltmvivoprd01_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Sql/servers/ltmvivoprd01/firewallRules/ASE'.",
+            "type": "Microsoft.Sql/servers/firewallRules",
+            "kind": "v12.0",
+            "name": "[parameters('firewallRules_ASE_name')]",
+            "apiVersion": "2014-04-01-preview",
+            "location": "East US 2",
+            "properties": {
+                "startIpAddress": "40.84.49.78",
+                "endIpAddress": "40.84.49.78"
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_ltmvivoprd01_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Sql/servers/ltmvivoprd01/firewallRules/LTM1'.",
+            "type": "Microsoft.Sql/servers/firewallRules",
+            "kind": "v12.0",
+            "name": "[parameters('firewallRules_LTM1_name')]",
+            "apiVersion": "2014-04-01-preview",
+            "location": "East US 2",
+            "properties": {
+                "startIpAddress": "187.120.4.216",
+                "endIpAddress": "187.120.4.220"
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_ltmvivoprd01_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Sql/servers/ltmvivoprd01/firewallRules/LTM2'.",
+            "type": "Microsoft.Sql/servers/firewallRules",
+            "kind": "v12.0",
+            "name": "[parameters('firewallRules_LTM2_name')]",
+            "apiVersion": "2014-04-01-preview",
+            "location": "East US 2",
+            "properties": {
+                "startIpAddress": "189.2.149.44",
+                "endIpAddress": "189.2.149.47"
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_ltmvivoprd01_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Sql/servers/ltmvivoprd01/firewallRules/LTM3'.",
+            "type": "Microsoft.Sql/servers/firewallRules",
+            "kind": "v12.0",
+            "name": "[parameters('firewallRules_LTM3_name')]",
+            "apiVersion": "2014-04-01-preview",
+            "location": "East US 2",
+            "properties": {
+                "startIpAddress": "189.2.149.48",
+                "endIpAddress": "189.2.149.51"
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_ltmvivoprd01_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Sql/servers/ltmvivoprd01/firewallRules/LTM4'.",
+            "type": "Microsoft.Sql/servers/firewallRules",
+            "kind": "v12.0",
+            "name": "[parameters('firewallRules_LTM4_name')]",
+            "apiVersion": "2014-04-01-preview",
+            "location": "East US 2",
+            "properties": {
+                "startIpAddress": "200.250.246.72",
+                "endIpAddress": "200.250.246.75"
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_ltmvivoprd01_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Sql/servers/ltmvivoprd01/firewallRules/LTM5'.",
+            "type": "Microsoft.Sql/servers/firewallRules",
+            "kind": "v12.0",
+            "name": "[parameters('firewallRules_LTM5_name')]",
+            "apiVersion": "2014-04-01-preview",
+            "location": "East US 2",
+            "properties": {
+                "startIpAddress": "200.174.50.28",
+                "endIpAddress": "200.174.50.31"
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_ltmvivoprd01_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c2f3374a-1f37-472e-88e1-78a28d68a2fe/resourceGroups/VivoPrd/providers/Microsoft.Sql/servers/ltmvivoprd01/firewallRules/SRV-AZU-QV-01'.",
+            "type": "Microsoft.Sql/servers/firewallRules",
+            "kind": "v12.0",
+            "name": "[parameters('firewallRules_SRV_AZU_QV_01_name')]",
+            "apiVersion": "2014-04-01-preview",
+            "location": "East US 2",
+            "properties": {
+                "startIpAddress": "23.96.39.207",
+                "endIpAddress": "23.96.39.207"
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_ltmvivoprd01_name'))]"
+            ]
+        }
+    ]
+}

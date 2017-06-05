@@ -293,14 +293,14 @@
           "type": "endpoints",
           "dependsOn": [
             "[variables('profileName')]",
-            "[variables('storageAccountName')]"
+            "[variables('storageAccountMasterName')]"
           ],
           "location": "[resourceGroup().location]",
           "tags": {
             "displayName": "[variables('endpointName')]"
           },
           "properties": {
-            "originHostHeader": "[replace(replace(reference(variables('storageAccountName')).primaryEndpoints.blob,'https://',''),'/','')]",
+            "originHostHeader": "[replace(replace(reference(variables('storageAccountMasterName')).primaryEndpoints.blob,'https://',''),'/','')]",
             "isHttpAllowed": true,
             "isHttpsAllowed": true,
             "queryStringCachingBehavior": "IgnoreQueryString",
@@ -310,7 +310,7 @@
               {
                 "name": "origin1",
                 "properties": {
-                  "hostName": "[replace(replace(reference(variables('storageAccountName')).primaryEndpoints.blob,'https://',''),'/','')]"
+                  "hostName": "[replace(replace(reference(variables('storageAccountMasterName')).primaryEndpoints.blob,'https://',''),'/','')]"
                 }
               }
             ]
@@ -319,4 +319,14 @@
       ]
     }
   ]
+  "outputs": {
+    "hostName": {
+      "type": "string",
+      "value": "[reference(variables('endpointName')).hostName]"
+    },
+    "originHostHeader": {
+      "type": "string",
+      "value": "[reference(variables('endpointName')).originHostHeader]"
+    }
+  }
  }

@@ -319,14 +319,4 @@
       ]
     }
   ]
-  "outputs": {
-    "hostName": {
-      "type": "string",
-      "value": "[reference(variables('endpointName')).hostName]"
-    },
-    "originHostHeader": {
-      "type": "string",
-      "value": "[reference(variables('endpointName')).originHostHeader]"
-    }
-  }
  }

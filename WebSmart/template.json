@@ -112,7 +112,7 @@
   "variables": {
     "hostingPlanName": "[concat(parameters('projectName'), 'ServicePlan')]",
     "webSiteName": "[concat(parameters('projectName'), 'HotSite')]",
-    "sqlserverName": "[concat(parameters('projectName'), 'SQL')]",
+    "sqlserverName": "[concat(parameters('storageAccountName'), 'sqlserver')]",
     "cacheName": "[concat(parameters('projectName'), 'Redis')]",
     "endpointName": "[concat(parameters('projectName'), 'Cdn')]",
     "profileName": "[concat(parameters('projectName'), 'CdnProfile')]",

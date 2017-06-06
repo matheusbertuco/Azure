@@ -112,6 +112,7 @@
   "variables": {
     "hostingPlanName": "[concat(parameters('projectName'), 'ServicePlan')]",
     "webSiteName": "[concat(parameters('projectName'), 'HotSite')]",
+    "webSiteAdminName": "[concat(parameters('projectName'), 'Admin')]",
     "sqlserverName": "[concat(parameters('storageAccountName'), 'sqlserver')]",
     "cacheName": "[concat(parameters('projectName'), 'Redis')]",
     "endpointName": "[concat(parameters('projectName'), 'Cdn')]",
@@ -197,6 +198,24 @@
       },
       "properties": {
         "name": "[variables('webSiteName')]",
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"
+      }
+    },
+    {
+      "apiVersion": "2015-08-01",
+      "name": "[variables('webSiteAdminName')]",
+      "type": "Microsoft.Web/sites",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+        "[concat('Microsoft.Web/serverFarms/', variables('hostingPlanName'))]",
+        "[concat('Microsoft.Cache/Redis/', variables('cacheName'))]"
+      ],
+      "tags": {
+        "[concat('hidden-related:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', variables('hostingPlanName'))]": "empty",
+        "displayName": "Website"
+      },
+      "properties": {
+        "name": "[variables('webSiteAdminName')]",
         "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"
       }
     },

@@ -113,13 +113,13 @@
     "hostingPlanName": "[concat(parameters('projectName'), 'ServicePlan')]",
     "webSiteName": "[concat(parameters('projectName'), 'HotSite')]",
     "webSiteAdminName": "[concat(parameters('projectName'), 'Admin')]",
-    "sqlserverName": "[concat(parameters('storageAccountName'), 'sqlserver')]",
+    "sqlserverName": "[concat(parameters('storageAccountName'), '')]",
     "cacheName": "[concat(parameters('projectName'), 'Redis')]",
     "endpointName": "[concat(parameters('projectName'), 'Cdn')]",
     "profileName": "[concat(parameters('projectName'), 'CdnProfile')]",
 	"storageAccountMasterName": "[concat(parameters('storageAccountName'))]",
 	"storageAccountLogName": "[concat(parameters('storageAccountName'), 'logs')]",
-	"databaseName": "[concat(parameters('projectName'), 'DB')]"
+	"databaseName": "[concat(parameters('projectName'), '')]"
   },
   "resources": [
     {

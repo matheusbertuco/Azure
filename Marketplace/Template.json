@@ -41,7 +41,7 @@
       "metadata": {
         "description": "Name of web site."
       }
-    }
+    },
     "ApiAppNameApiMarketplaceAdmin": {
       "type": "string",
       "minLength": 1,

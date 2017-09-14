@@ -1,0 +1,21 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "WebAppSvcPlanName": {
+      "value": "demoWebAppSvcPlan"
+    },
+    "WebAppSvcPlanWorkerSize": {
+      "value": "0"
+    },
+    "WebAppSvcPlanSKU": {
+      "value": "Basic"
+    },
+    "WebAppNameAdminUI": {
+      "value": "demoWebApp3434s"
+    },
+    "ApiAppNameApiMarketplaceAdmin": {
+      "value": "demoWebApp3434s"
+    }
+  }
+}

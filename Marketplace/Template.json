@@ -105,9 +105,9 @@
               "remoteDebuggingEnabled": false,
               "remoteDebuggingVersion": "VS2015"
             }
-          },
+          }
         ]
-      }
+      },
       {
         "name": "[parameters('ApiAppNameApiMarketplaceAdmin')]",
         "type": "Microsoft.Web/sites",
@@ -144,7 +144,7 @@
               "remoteDebuggingEnabled": false,
               "remoteDebuggingVersion": "VS2015"
             }
-          },
+          }
         ]
       }
     ],

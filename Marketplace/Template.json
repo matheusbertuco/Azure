@@ -1,0 +1,153 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "WebAppSvcPlanName": {
+      "type": "string",
+      "minLength": 1,
+      "defaultValue": "AppSvcPlan",
+      "metadata": {
+        "description": "Name of AppSvc Plan."
+      }
+    },
+    "WebAppSvcPlanSKU": {
+      "type": "string",
+      "allowedValues": [
+        "Free",
+        "Shared",
+        "Basic",
+        "Standard"
+      ],
+      "defaultValue": "Basic",
+      "metadata": {
+        "description": "App Svc Plan SKU."
+      }
+    },
+    "WebAppSvcPlanWorkerSize": {
+      "type": "string",
+      "allowedValues": [
+        "0",
+        "1",
+        "2"
+      ],
+      "defaultValue": "0",
+      "metadata": {
+        "description": "Size of AppSvc Worker."
+      }
+    },
+    "WebAppNameAdminUI": {
+      "type": "string",
+      "minLength": 1,
+      "metadata": {
+        "description": "Name of web site."
+      }
+    }
+    "ApiAppNameApiMarketplaceAdmin": {
+      "type": "string",
+      "minLength": 1,
+      "metadata": {
+        "description": "Name of api app."
+      }
+    }
+  },
+  "variables": {
+  },
+    "resources": [
+      {
+            "name": "[parameters('WebAppSvcPlanName')]",
+            "type": "Microsoft.Web/serverfarms",
+            "location": "[resourceGroup().location]",
+            "apiVersion": "2014-06-01",
+            "dependsOn": [ ],
+            "tags": {
+                "displayName": "AppSvcPlan"
+            },
+            "properties": {
+                "name": "[parameters('WebAppSvcPlanName')]",
+                "sku": "[parameters('WebAppSvcPlanSKU')]",
+                "workerSize": "[parameters('WebAppSvcPlanWorkerSize')]",
+                "numberOfWorkers": 1
+            }
+        },
+      {
+        "name": "[parameters('WebAppNameAdminUI')]",
+        "type": "Microsoft.Web/sites",
+        "location": "[resourceGroup().location]",
+        "apiVersion": "2015-08-01",
+        "dependsOn": [
+          "[concat('Microsoft.Web/serverfarms/', parameters('WebAppSvcPlanName'))]"
+        ],
+        "tags": {
+          "[concat('hidden-related:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', parameters('WebAppSvcPlanName'))]": "Resource",
+          "displayName": "WebApp"
+        },
+        "properties": {
+          "name": "[parameters('WebAppNameAdminUI')]",
+          "serverFarmId": "[resourceId('Microsoft.Web/serverfarms/', parameters('WebAppSvcPlanName'))]"
+        },
+        "resources": [
+          {
+            "apiVersion": "2015-08-01",
+            "name": "web",
+            "type": "config",
+            "dependsOn": [
+              "[concat('Microsoft.Web/sites/', parameters('WebAppNameAdminUI'))]"
+            ],
+            "tags": {
+              "displayName": "WebAppConfig"
+            },
+            "properties": {
+              "phpVersion": "5.6",
+              "netFrameworkVersion": "v4.6",
+              "use32BitWorkerProcess": false, 
+              "webSocketsEnabled": true,
+              "alwaysOn": false,
+              "remoteDebuggingEnabled": false,
+              "remoteDebuggingVersion": "VS2015"
+            }
+          },
+        ]
+      }
+      {
+        "name": "[parameters('ApiAppNameApiMarketplaceAdmin')]",
+        "type": "Microsoft.Web/sites",
+        "location": "[resourceGroup().location]",
+        "apiVersion": "2015-08-01",
+        "dependsOn": [
+          "[concat('Microsoft.Web/serverfarms/', parameters('WebAppSvcPlanName'))]"
+        ],
+        "tags": {
+          "[concat('hidden-related:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', parameters('WebAppSvcPlanName'))]": "Resource",
+          "displayName": "APIApp"
+        },
+        "properties": {
+          "name": "[parameters('ApiAppNameApiMarketplaceAdmin')]",
+          "serverFarmId": "[resourceId('Microsoft.Web/serverfarms/', parameters('WebAppSvcPlanName'))]"
+        },
+        "resources": [
+          {
+            "apiVersion": "2015-08-01",
+            "name": "web",
+            "type": "config",
+            "dependsOn": [
+              "[concat('Microsoft.Web/sites/', parameters('ApiAppNameApiMarketplaceAdmin'))]"
+            ],
+            "tags": {
+              "displayName": "WebAppConfig"
+            },
+            "properties": {
+              "phpVersion": "5.6",
+              "netFrameworkVersion": "v4.6",
+              "use32BitWorkerProcess": false, 
+              "webSocketsEnabled": true,
+              "alwaysOn": false,
+              "remoteDebuggingEnabled": false,
+              "remoteDebuggingVersion": "VS2015"
+            }
+          },
+        ]
+      }
+    ],
+    "outputs": {
+    }
+}
